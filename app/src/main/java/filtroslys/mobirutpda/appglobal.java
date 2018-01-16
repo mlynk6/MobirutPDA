@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class appglobal extends Application {
 	private String Usuario, Fecha, CodigoVendedor, NombreVendedor, NombreCia, sx;
-	private String UMaestroId="MAESTRO",UMaestroClave="NCHWYXV";
+	private String USinc="N",UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
 
 	// Configuracion Predeterminada del WebService, cambia al momento de
 	// utilizar las ip y puertos. 
@@ -223,7 +223,11 @@ public class appglobal extends Application {
 	public boolean getEsMercaderista(){
 		return esMercaderista;
 	}
-	
+
+	public String getUsuarioSincronizado(){
+		return USinc;
+	}
+
 	public void setUsuario(String Usuario) {
 		this.Usuario = Usuario;
 	}
@@ -396,5 +400,8 @@ public class appglobal extends Application {
 		this.UMaestroClave = UMaestroClave;
 	}
 
+	public void setUsuarioSincronizado(String USinc){
+		this.USinc = USinc;
+	}
 
 }

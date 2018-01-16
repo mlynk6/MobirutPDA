@@ -1,5 +1,7 @@
 package filtroslys.mobirutpda;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Context;
@@ -57,4 +59,10 @@ public class Login extends AppCompatActivity {
         db = null;
         entDB = null;
     }
+
+    private void CargarUsuario(){
+
+    }
+
+
 }
