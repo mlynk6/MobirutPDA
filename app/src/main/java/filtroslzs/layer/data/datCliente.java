@@ -12,7 +12,7 @@ public class datCliente {
         objDat = new datUtilDB(this.entDB);
     }
 
-    public Cursor ListaCliente(String vend,String cia,String codigo,String nombre) {
+    public Cursor ListaCliente(String Vend,String Cia,String Codigo,String Nombre) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal,"
                 + "d.c_descripcion as v_segmento,e.c_descripcion as v_tipocategoria,"
                 + "c.n_pordescuento * 100 || '%' as n_descuento,a.c_textolsthtml "
@@ -22,21 +22,21 @@ public class datCliente {
                 + "inner join tbc_segmentocliente d on(b.c_segmento = d.c_segmento) "
                 + "inner join tbc_tipocategoriacliente e on(b.c_tipocategoria=e.c_tipocategoria) ";
 
-        if(vend.length()>0){
+        if(Vend.length()>0){
             sql = sql + "inner join tbc_clientexvendcia f on (b.n_codcliente = f.n_codcliente "
-                    + "and b.n_codcia = f.n_codcia and f.v_codvendedor '" + vend + "') ";
+                    + "and b.n_codcia = f.n_codcia and f.v_codvendedor '" + Vend + "') ";
         }
 
-        sql = sql + "where a.v_codcliente like '%" + codigo + "%' "
-                + "and a.v_razsocial like '%" + nombre + "%' "
-                + "and b.n_codcia = " + cia + " "
+        sql = sql + "where a.v_codcliente like '%" + Codigo + "%' "
+                + "and a.v_razsocial like '%" + Nombre + "%' "
+                + "and b.n_codcia = " + Cia + " "
                 + "order by a.n_codcliente;";
 
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
 
-    public Cursor ListaClienteRuta(String vend,String cia,String codigo,String nombre,int dia) {
+    public Cursor ListaClienteRuta(String Vend,String Cia,String Codigo,String Nombre,int Dia) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal," +
                 "e.c_descripcion as v_segmento,f.c_descripcion as v_tipocategoria," +
                 "d.n_pordescuento * 100 || '%' as n_descuento,a.c_textolsthtml" +
@@ -47,15 +47,15 @@ public class datCliente {
                 "left join tbc_segmentocliente e on (b.c_segmento = e.c_segmento) " +
                 "left join tbc_tipocategoriacliente f on (b.c_tipocategoria = f.c_tipocategoria) ";
 
-        if(vend.length()>0){
+        if(Vend.length()>0){
             sql = sql + "inner join tbc_clientexvendcia g on (b.n_codcliente = g.n_codcliente "
-                    + "and b.n_codcia = g.n_codcia and g.v_codvendedor '" + vend + "') ";
+                    + "and b.n_codcia = g.n_codcia and g.v_codvendedor '" + Vend + "') ";
         }
 
-        sql = sql + "where a.v_codcliente like '%" + codigo + "%' "
-                + "and a.v_razsocial like '%" + nombre + "%' "
-                + "and b.n_codcia = " + cia + " "
-                + "and c.n_dia = " + dia + " "
+        sql = sql + "where a.v_codcliente like '%" + Codigo + "%' "
+                + "and a.v_razsocial like '%" + Nombre + "%' "
+                + "and b.n_codcia = " + Cia + " "
+                + "and c.n_dia = " + Dia + " "
                 + "and c.c_verificado='N' "
                 + "order by c.n_orden,a.n_codcliente;";
 
@@ -63,7 +63,7 @@ public class datCliente {
         return c;
     }
 
-    public Cursor VerClienteForm(String cliente,String cia) {
+    public Cursor VerClienteForm(String Cliente,String Cia) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal,"
                 + "d.c_descripcion as v_segmento,b.c_tipocategoria,e.c_descripcion as v_tipocategoria,"
                 + "c.n_pordescuento * 100 || '%' as n_descuento,a.c_textoreghtml,"
@@ -73,14 +73,14 @@ public class datCliente {
                 + "inner join tbc_categoria c on (b.n_codcategoria = c.n_codcategoria) "
                 + "inner join tbc_segmentocliente d on(b.c_segmento = d.c_segmento) "
                 + "inner join tbc_tipocategoriacliente e on(b.c_tipocategoria=e.c_tipocategoria) "
-                + "where a.n_codcliente = " + cliente + " "
-                + "and b.n_codcia = " + cia;
+                + "where a.n_codcliente = " + Cliente + " "
+                + "and b.n_codcia = " + Cia;
 
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
 
-    public Cursor ListaClienteCombo(String vend,String cia) {
+    public Cursor ListaClienteCombo(String Vend,String Cia) {
         sql = "Select n_codcliente, rtrim(v_razsocial) "
                 + "from tbc_cliente "
                 + "order by 2 ";
