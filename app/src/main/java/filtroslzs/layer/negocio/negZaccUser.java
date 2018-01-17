@@ -49,4 +49,9 @@ public class negZaccUser {
         cx=null;
         return objEnt;
     }
+
+    public int ActualizarHomeCodigo(String Usuario,String Vendedor,String Transportista){
+        return procesomain.ActualizarHomeCodigo(Usuario,Vendedor,Transportista);
+    }
+
 }

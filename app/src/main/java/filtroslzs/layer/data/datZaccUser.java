@@ -29,4 +29,26 @@ public class datZaccUser {
         return c;
     }
 
+    public int ActualizarHomeCodigo(String Usuario,String Vendedor,String Transportista){
+        int nVal = 1;
+        if(Vendedor==null) Vendedor="";
+        if(Transportista==null) Transportista="";
+
+        if(nVal==1 && Vendedor.length()>0){
+            sql = "Update zacc_usuario "
+                    + "Set c_codvendcia ='" + Vendedor + "' "
+                    + "where c_usuario = '" + Usuario + "'";
+            nVal = objDat.EjecutaQuery(sql);
+        }
+
+        if(nVal==1 && Transportista.length()>0){
+            sql = "Update zacc_usuario "
+                    + "Set c_codtransp = '" + Transportista + "' "
+                    + "where c_usuario = '" + Usuario + "'";
+            nVal = objDat.EjecutaQuery(sql);
+        }
+
+        return nVal;
+    }
+
 }

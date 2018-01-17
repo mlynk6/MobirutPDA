@@ -12,13 +12,26 @@ public class datUtilDB {
         this.entDB = entDB;
     }
 
-    public void EjecutaQuery(String sql) {
-        entDB.getDBaseDatos().execSQL(sql);
-    }
-
     public Cursor EjecutaSelect(String sql) {
         Cursor c = entDB.getDBaseDatos().rawQuery(sql, null);
         return c;
+    }
+
+    public int EjecutaQuery(String sql) {
+        int valor = 0;
+        String cadena = "";
+        entDB.getDBaseDatos().beginTransaction();
+        try {
+            entDB.getDBaseDatos().execSQL(sql);
+            entDB.getDBaseDatos().setTransactionSuccessful();
+            valor = 1;
+        } catch (SQLException e) {
+            Log.e("Err",e.getMessage());
+            valor = 0;
+        } finally {
+            entDB.getDBaseDatos().endTransaction();
+        }
+        return valor;
     }
 
     public int EjecutaQuerys(String sql[]) {
@@ -38,7 +51,7 @@ public class datUtilDB {
             entDB.getDBaseDatos().setTransactionSuccessful();
             valor = 1;
         } catch (SQLException e) {
-            Log.e("eero",e.getMessage());
+            Log.e("Err",e.getMessage());
             valor = 0;
         } finally {
             entDB.getDBaseDatos().endTransaction();

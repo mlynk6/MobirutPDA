@@ -32,8 +32,8 @@ public class negZaccMenu {
         return ListaDat;
     }
 
-    public boolean AccesoMenu(String Usuario,String IdReg) {
-        Cursor cx = procesomain.AccesoMenu(Usuario,IdReg);
+    public boolean GetAccesoMenu(String Usuario,String IdReg) {
+        Cursor cx = procesomain.GetAccesoMenu(Usuario,IdReg);
         entZaccUser objEnt = new entZaccUser();
         boolean bVal = false;
 

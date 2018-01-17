@@ -4,6 +4,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import filtroslzs.layer.data.datVendedor;
 import filtroslzs.layer.entidad.entVendedor;
+import filtroslzs.layer.entidad.entVendxCia;
 import filtroslzs.layer.entidad.entDataBase;
 
 public class negVendedor {
@@ -36,20 +37,35 @@ public class negVendedor {
         return ListaDat;
     }
 
-    /*
-    public entVendedor AutenticaUsuario(String Usuario, String Clave) {
-        Cursor cx = procesomain.AutenticaUsuario(Usuario,Clave);
+    public ArrayList<entVendxCia> ListaVendxCia(String Vendedor) {
+        ArrayList<entVendxCia> ListaDat = new ArrayList<entVendxCia>();
+        Cursor cx = procesomain.ListaVendxCia(Vendedor);
+        entVendxCia objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entVendxCia();
+            objEnt.setCodCia(cx.getInt(0));
+            objEnt.setContrasena(cx.getString(1));
+            objEnt.setCodVendCia(cx.getString(2));
+            objEnt.setMercaderista(cx.getString(3));
+            ListaDat.add(objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
+    public boolean GetVendCiaAutenticado(String VendCia,String Clave) {
+        Cursor cx = procesomain.GetVendCiaAutenticado(VendCia,Clave);
         entVendedor objEnt = new entVendedor();
+        boolean bVal = false;
 
         if (cx.moveToFirst()) {
-            objEnt.setUsuario(cx.getString(0));
-            objEnt.setNombre(cx.getString(1));
-            objEnt.setCorreo(cx.getString(2));
-            objEnt.setCodVendCia(cx.getString(3));
-            objEnt.setCodTransp(cx.getString(4));
+            if(cx.getInt(0)>0) bVal = true;
         }
         cx.close();
         cx=null;
-        return objEnt;
-    }*/
+        return bVal;
+    }
+
 }

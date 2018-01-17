@@ -63,7 +63,7 @@ public class datCliente {
         return c;
     }
 
-    public Cursor VerClienteForm(String Cliente,String Cia) {
+    public Cursor GetClienteForm(String Cliente,String Cia) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal,"
                 + "d.c_descripcion as v_segmento,e.c_descripcion as v_tipocategoria,"
                 + "c.n_pordescuento * 100 || '%' as n_descuento,a.c_textoreghtml,"

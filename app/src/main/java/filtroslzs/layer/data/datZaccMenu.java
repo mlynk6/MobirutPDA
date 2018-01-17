@@ -22,7 +22,7 @@ public class datZaccMenu {
         return c;
     }
 
-    public Cursor AccesoMenu(String Usuario,String IdReg) {
+    public Cursor GetAccesoMenu(String Usuario,String IdReg) {
         sql = "Select count(1) "
                 + "from zacc_menu "
                 + "where c_usuario ='" + Usuario + "' "

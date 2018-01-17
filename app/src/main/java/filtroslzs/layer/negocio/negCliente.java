@@ -62,8 +62,8 @@ public class negCliente {
         return ListaDat;
     }
 
-    public entCliente VerClienteForm(String Cliente,String Cia) {
-        Cursor cx = procesomain.VerClienteForm(Cliente,Cia);
+    public entCliente GetClienteForm(String Cliente,String Cia) {
+        Cursor cx = procesomain.GetClienteForm(Cliente,Cia);
         entCliente objEnt = new entCliente();
 
         if (cx.moveToFirst()) {

@@ -28,7 +28,7 @@ public class datVendedor {
         return c;
     }
 
-    public Cursor AutenticarVendedor(String VendCia,String Clave) {
+    public Cursor GetVendCiaAutenticado(String VendCia,String Clave) {
         sql = "Select Count(1) "
                 + "from tbd_vendxcia "
                 + "where v_codvendcia='" + VendCia + "' "
