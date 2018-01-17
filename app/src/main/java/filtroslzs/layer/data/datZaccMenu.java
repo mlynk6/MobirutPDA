@@ -16,7 +16,7 @@ public class datZaccMenu {
     public Cursor ListaMenuHome(String Usuario) {
         sql = "Select c_idreg,c_nombre,c_tipo,c_idref "
                 + "from zacc_menu "
-                + "where c_usuario='" + Usuario + " "
+                + "where c_usuario='" + Usuario + "' "
                 + "and c_nivel ='IN'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;

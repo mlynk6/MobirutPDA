@@ -1,6 +1,9 @@
 package filtroslzs.layer.negocio;
 
 import android.database.Cursor;
+import android.util.Log;
+
+import filtroslys.mobirutpda.Login;
 import filtroslzs.layer.data.*;
 import filtroslzs.layer.entidad.*;
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ public class negZaccMenu {
             objEnt.setTipo(cx.getString(2));
             objEnt.setIdRef(cx.getString(3));
             ListaDat.add(objEnt);
+            Log.i("Menu id : ",cx.getString(0));
         }
         objEnt = null;
         cx.close();

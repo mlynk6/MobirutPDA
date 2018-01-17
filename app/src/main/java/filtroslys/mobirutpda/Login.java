@@ -2,6 +2,8 @@ package filtroslys.mobirutpda;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ import filtroslzs.layer.negocio.*;
 public class Login extends AppCompatActivity {
     Context contexto;
     appglobal app;
+    SharedPreferences preferences;
     Button btnLogin;
     EditText txtUsuario , txtClave;
     @Override
@@ -34,6 +37,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         app = ((appglobal) getApplicationContext());
+        preferences = PreferenceManager.getDefaultSharedPreferences(Login.this);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtClave = (EditText) findViewById(R.id.txtPass);
         txtUsuario = (EditText) findViewById(R.id.txtUsuario);
@@ -67,6 +71,11 @@ public class Login extends AppCompatActivity {
                             return;
                         }
                         else {
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("CodUsuario", zuser.getUsuario());
+                            editor.putString("NomUsuario",zuser.getNombre());
+                            editor.putString("MailUsuario",zuser.getCorreo());
+                            editor.commit();
                             Intent intent = new Intent(Login.this,InicioMenu.class);
                             startActivity(intent);
 
