@@ -12,6 +12,7 @@ public class entCliente {
     private int n_cantletras=0;
     private double n_porcentajedoc=0;
     private String c_textolsthtml="",c_textoreghtml="";
+    private String c_segmento="",c_tipocategoria="",c_descuento="";
 
     public String getVCodCliente() {
         return v_codcliente;
@@ -201,7 +202,7 @@ public class entCliente {
         return c_flagpreciolista;
     }
 
-    public void setC_FlagPrecioLista(String c_flagpreciolista) {
+    public void setFlagPrecioLista(String c_flagpreciolista) {
         this.c_flagpreciolista = c_flagpreciolista;
     }
 
@@ -243,5 +244,29 @@ public class entCliente {
 
     public void setTextoRegHtml(String c_textoreghtml) {
         this.c_textoreghtml = c_textoreghtml;
+    }
+
+    public String getSegmento() {
+        return c_segmento;
+    }
+
+    public void setSegmento(String c_segmento) {
+        this.c_segmento = c_segmento;
+    }
+
+    public String getTipoCategoria() {
+        return c_tipocategoria;
+    }
+
+    public void setTipoCategoria(String c_tipocategoria) {
+        this.c_tipocategoria = c_tipocategoria;
+    }
+
+    public String getDescuento() {
+        return c_descuento;
+    }
+
+    public void setDescuento(String c_descuento) {
+        this.c_descuento = c_descuento;
     }
 }

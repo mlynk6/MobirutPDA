@@ -65,7 +65,7 @@ public class datCliente {
 
     public Cursor VerClienteForm(String Cliente,String Cia) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal,"
-                + "d.c_descripcion as v_segmento,b.c_tipocategoria,e.c_descripcion as v_tipocategoria,"
+                + "d.c_descripcion as v_segmento,e.c_descripcion as v_tipocategoria,"
                 + "c.n_pordescuento * 100 || '%' as n_descuento,a.c_textoreghtml,"
                 + "a.v_agenteretencion,a.v_garante,a.n_cantletras,a.n_porcentajedoc"
                 + "from tbc_cliente a "
@@ -88,6 +88,44 @@ public class datCliente {
         return c;
     }
 
+    public Cursor ListaLineaCredito(String Cliente,String Cia) {
+        sql = "Select a.v_codlinea as [Código],b.n_codmoneda as [CodMonOrigen], b.v_simbolo as [SimbMonOrigen], "
+                + "a.n_montoasignado as [Aprobado], (a.n_montoasignado-a.n_montoutilizado) as [Disponible], "
+                + "b.n_tipocambio as [Tcambio],c.v_simbolo as [SimbMonDestino] "
+                + "from tbd_creditoxcliente a "
+                + "inner join tbc_moneda b on (a.n_codmoneda = b.n_codmoneda) "
+                + "left join tbc_moneda c on (a.n_codmoneda <> c.n_codmoneda) "
+                + "where a.n_codcliente = " + Cliente + " "
+                + "and n_codcia = " + Cia;
+        Cursor c = objDat.EjecutaSelect(sql);
+        return c;
+    }
+
+    public Cursor ListaCuentaCorriente(String Cliente) {
+        sql = "Select a.v_numdoc as [Num Doc],b.v_simbolo as [Moneda], a.n_montoeudaactual as [Deuda Actual], "
+                + "a.d_fecvencimiento as [Fecha Vencimiento], n_diasvencimiento as [Días Vencimiento], "
+                + "a.v_codigounico as [Codigo Unico], v_banco as [Banco], c_estado, "
+                + "a.v_flagpermitir,a.v_codlinea,c.v_descia,a.v_observacion,a.v_docasociado,a.v_textohtml "
+                + "from tbc_ctactecliente a "
+                + "inner join tbc_moneda b on (a.n_codmoneda = b.n_codmoneda) "
+                + "inner join tbc_compania c on (a.n_codcia = c.n_codcia) "
+                + "where a.n_codcliente = " + Cliente + " "
+                + "order by (case when a.n_diasvencimiento is null then 0 else a.n_diasvencimiento end) asc";
+
+        Cursor c = objDat.EjecutaSelect(sql);
+        return c;
+    }
+
+    public Cursor ListaTelefono(String Cliente) {
+        sql = "Select n_cliente,c_telefono,c_clasificatelefono "
+                + "from tbc_clientetelefono "
+                + "where n_cliente = " + Cliente + " "
+                + "order by 1,2";
+
+        Cursor c = objDat.EjecutaSelect(sql);
+        return c;
+    }
+
     /*
 
 
@@ -102,33 +140,9 @@ public class datCliente {
         return c;
     }
 
-    public Cursor buscarlinea1(String codigo, String cia) {
-        sql = "select a.v_codlinea as [Código],b.n_codmoneda as [CodMonOrigen], b.v_simbolo as [SimbMonOrigen], "
-                + "a.n_montoasignado as [Aprobado], (a.n_montoasignado-a.n_montoutilizado) as [Disponible], "
-                + "b.n_tipocambio as [Tcambio],c.v_simbolo as [SimbMonDestino] "
-                + "from tbd_creditoxcliente a inner join tbc_moneda b on a.n_codmoneda = b.n_codmoneda "
-                + "left join tbc_moneda c on (a.n_codmoneda <> c.n_codmoneda) "
-                + "where a.n_codcliente = " + codigo + " and n_codcia = " + cia;
-        Cursor c = objDat.EjecutaSelect(sql);
-        return c;
-    }
 
-    public Cursor buscarCtaCteTable(String codigo) {
-        sql = "select a.v_numdoc as [Num Doc],b.v_simbolo as [Moneda], a.n_montoeudaactual as [Deuda Actual], "
-                + "a.d_fecvencimiento as [Fecha Vencimiento], n_diasvencimiento as [Días Vencimiento], "
-                + "a.v_codigounico as [Codigo Unico], v_banco as [Banco], c_estado, "
-                + "a.v_flagpermitir,a.v_codlinea,c.v_descia,a.v_observacion,a.v_docasociado,a.v_textohtml "
-                + "from tbc_moneda b "
-                + "inner join tbc_ctactecliente a on b.n_codmoneda = a.n_codmoneda "
-                + "inner join TBC_COMPAÑIA c on a.n_codcia = c.n_codcia "
-                + "where a.n_codcliente = "
-                + codigo
-                + " "
-                + "order by (case when a.n_diasvencimiento is null then 0 else a.n_diasvencimiento end) asc";
 
-        Cursor c = objDat.EjecutaSelect(sql);
-        return c;
-    }
+
 
     public Cursor buscarDireccion(String codigo, String conDefault) {
         sql = "";
@@ -255,18 +269,7 @@ public class datCliente {
         return descuento;
     }
 
-    public Cursor buscarTelefonoxcliente(String codigo) {
-        sql = "select 0 as n_cliente, '--NINGUNO--' as c_telefono, '-' as c_clasificatelefono "
-                + "union all "
-                + "select n_cliente,c_telefono,c_clasificatelefono "
-                + "from tbc_clientetelefono "
-                + "where n_cliente = "
-                + codigo
-                + " " + "order by 1,2";
 
-        Cursor c = objDat.EjecutaSelect(sql);
-        return c;
-    }
 
     public Cursor buscarDescuentoxcliente(String cia, String cliente,
                                           String sisventa) {

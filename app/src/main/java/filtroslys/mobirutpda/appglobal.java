@@ -5,8 +5,11 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 public class appglobal extends Application {
-	private String Usuario, Fecha, CodigoVendedor="MAESTRO", NombreVendedor, NombreCia, sx;
-	private String USinc="N",UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
+	private String Usuario, Fecha, USinc="N";
+	private String UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
+	private String CodigoVendedor="MAESTRO", NombreVendedor = "";
+	private int CodCia=1; String NombreCia = "";
+	private String codVendCia="", codTransp="";
 
 	// Configuracion Predeterminada del WebService, cambia al momento de
 	// utilizar las ip y puertos. 
@@ -35,7 +38,7 @@ public class appglobal extends Application {
 	private String upk = "638;8>;9B=B", sfk = "37;8:<",sfk2 = "27<76<7@";
 	private int regkits = 20;
 
-	private int CodCia=1, clientesel=0;
+	private int clientesel=0;
 	private SQLiteDatabase db;
 	private entDataBase entConnDB;
 	private String esindustrial = "N";
@@ -75,6 +78,14 @@ public class appglobal extends Application {
 
 	public int getCodCia() {
 		return CodCia;
+	}
+
+	public String getCodVendCia() {
+		return codVendCia;
+	}
+
+	public String getCodTransp() {
+		return codTransp;
 	}
 
 	public int getClienteId() {
@@ -258,6 +269,14 @@ public class appglobal extends Application {
 
 	public void setCodCia(int CodCia) {
 		this.CodCia = CodCia;
+	}
+
+	public void setCodVendCia(String codVendCia) {
+		this.codVendCia = codVendCia;
+	}
+
+	public void setCodTransp(String codTransp) {
+		this.codTransp = codTransp;
 	}
 
 	public void setClienteId(int clientesel) {

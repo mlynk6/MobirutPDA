@@ -9,6 +9,7 @@ public class entCtaCteCliente {
     private Date d_fecvencimiento;
     private String v_codigounico="",v_banco="",c_estado="",v_flagpermitir="",v_codlinea="";
     private String v_observacion="",v_docasociado="",v_textohtml="";
+    private String v_simbolo="",v_descCia="";
 
     public int getCodCtaCorriente() {
         return n_codctacorriente;
@@ -98,7 +99,7 @@ public class entCtaCteCliente {
         this.v_codigounico = v_codigounico;
     }
 
-    public String getBnco() {
+    public String getBanco() {
         return v_banco;
     }
 
@@ -152,5 +153,21 @@ public class entCtaCteCliente {
 
     public void setTextoHtml(String v_textohtml) {
         this.v_textohtml = v_textohtml;
+    }
+
+    public String getSimbolo() {
+        return v_simbolo;
+    }
+
+    public void setSimbolo(String v_simbolo) {
+        this.v_simbolo = v_simbolo;
+    }
+
+    public String getDescCia() {
+        return v_descCia;
+    }
+
+    public void setDescCia(String v_descCia) {
+        this.v_descCia = v_descCia;
     }
 }

@@ -1,5 +1,6 @@
 package filtroslzs.layer.data;
-import filtroslzs.layer.entidad.*;
+
+import filtroslzs.layer.entidad.entDataBase;
 import android.database.Cursor;
 
 public class datZaccUser {
@@ -19,12 +20,13 @@ public class datZaccUser {
         return c;
     }
 
-    public Cursor AutenticaUsuario(String Nombre, String Clave) {
-        sql = "Select c_usuario,c_nombre,c_correo "
+    public Cursor AutenticaUsuario(String Usuario, String Clave) {
+        sql = "Select c_usuario,c_nombre,c_correo,c_codvendcia,c_codtransp "
                 + "from zacc_user "
-                + "where c_usuario ='" + Nombre + "' "
+                + "where c_usuario ='" + Usuario + "' "
                 + "and c_clave ='" + Clave + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
+
 }
