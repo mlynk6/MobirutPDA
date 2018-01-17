@@ -15,16 +15,16 @@ public class datTransportista {
 
     public Cursor ListaTransportista() {
         sql = "Select v_compania,v_usuario,v_nombre,v_password,d_fecexpiracion "
-                + "from tbc_transportista";
+            + "from tbc_transportista";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
 
     public Cursor GetTranspAutenticado(String Transportista,String Clave) {
         sql = "Select Count(1) "
-                + "from tbc_transportista "
-                + "where v_usuario='" + Transportista + "' "
-                + "and v_password = '" + Clave + "'";
+            + "from tbc_transportista "
+            + "where v_usuario='" + Transportista + "' "
+            + "and v_password = '" + Clave + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }

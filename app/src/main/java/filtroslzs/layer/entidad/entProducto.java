@@ -5,6 +5,8 @@ public class entProducto {
     private String v_codpro="",v_subcodi="",v_despro="";
     private int n_stock=0,n_codsufijo=0,n_codprefijo=0,n_flgestadoact=0;
     private String c_tipopromocion="",c_proyectado="N",c_textolsthtml="",c_textoreghtml="";
+    private String c_caja="",c_procedencia="";
+    private String c_codEquiv="",c_marcaComp="";
 
     public int getCodPro() {
         return n_codpro;
@@ -108,5 +110,37 @@ public class entProducto {
 
     public void setTextoRegHtml(String c_textoreghtml) {
         this.c_textoreghtml = c_textoreghtml;
+    }
+
+    public String getCaja() {
+        return c_caja;
+    }
+
+    public void setCaja(String c_caja) {
+        this.c_caja = c_caja;
+    }
+
+    public String getProcedencia() {
+        return c_procedencia;
+    }
+
+    public void setProcedencia(String c_procedencia) {
+        this.c_procedencia = c_procedencia;
+    }
+
+    public String getCodigoEquiv() {
+        return c_codEquiv;
+    }
+
+    public void setCodigoEquiv(String c_codEquiv) {
+        this.c_codEquiv = c_codEquiv;
+    }
+
+    public String getMarcaComp() {
+        return c_marcaComp;
+    }
+
+    public void setMarcaComp(String c_marcaComp) {
+        this.c_marcaComp = c_marcaComp;
     }
 }

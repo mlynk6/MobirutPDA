@@ -4,7 +4,7 @@ public class entCreditoxCliente {
     private String v_codlinea="";
     private double n_montoasignado=0,n_montoutilizado=0,n_montodisponible=0,n_tcambio=0;
     private int n_codcia=0,n_codmoneda=0,n_codcliente=0;
-    private String v_simbolo="",v_simboloDest="";
+    private String v_simbolo="",v_simboloDest="",v_descripcion="";
 
     public String getCodLinea() {
         return v_codlinea;
@@ -84,5 +84,13 @@ public class entCreditoxCliente {
 
     public void setSimboloDest(String v_simboloDest) {
         this.v_simboloDest = v_simboloDest;
+    }
+
+    public String getDescripcion() {
+        return v_descripcion;
+    }
+
+    public void setDescripcion(String v_descripcion) {
+        this.v_descripcion = v_descripcion;
     }
 }
