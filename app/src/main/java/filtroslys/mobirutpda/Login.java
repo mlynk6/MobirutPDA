@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
                             editor.putString("NomUsuario",zuser.getNombre());
                             editor.putString("MailUsuario",zuser.getCorreo());
                             editor.commit();
+                            app.setUsuario(sUser);
                             Intent intent = new Intent(Login.this,InicioMenu.class);
                             startActivity(intent);
 
