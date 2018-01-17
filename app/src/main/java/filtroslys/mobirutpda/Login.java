@@ -72,14 +72,13 @@ public class Login extends AppCompatActivity {
                         }
                         else {
                             SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("CodUsuario", zuser.getUsuario());
-                            editor.putString("NomUsuario",zuser.getNombre());
-                            editor.putString("MailUsuario",zuser.getCorreo());
-                            editor.commit();
-                            app.setUsuario(sUser);
+                            app.setCodigoUsuario(zuser.getUsuario());
+                            app.setNombreUsuario(zuser.getNombre());
+                            app.setCorreoUsuario(zuser.getCorreo());
+                            app.setCodVendCia(zuser.getCodVendCia());
+                            app.setCodTransp(zuser.getCodTransp());
                             Intent intent = new Intent(Login.this,InicioMenu.class);
                             startActivity(intent);
-
                         }
 
                     }

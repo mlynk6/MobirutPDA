@@ -5,7 +5,8 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 public class appglobal extends Application {
-	private String Usuario, Fecha, USinc="N";
+	private String Fecha, USinc="N";
+	private String CodigoUsuario="",NombreUsuario="",CorreoUsuario="";
 	private String UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
 	private String CodigoVendedor="MAESTRO", NombreVendedor = "";
 	private int CodCia=1; String NombreCia = "";
@@ -56,8 +57,16 @@ public class appglobal extends Application {
 	private boolean esMercaderista = false;
 	private entRptaServ eRptaServ = new entRptaServ();
 
-	public String getUsuario() {
-		return Usuario;
+	public String getCodigoUsuario() {
+		return CodigoUsuario;
+	}
+
+	public String getNombreUsuario() {
+		return NombreUsuario;
+	}
+
+	public String getCorreoUsuario() {
+		return CorreoUsuario;
 	}
 
 	public String getFecha() {
@@ -247,8 +256,16 @@ public class appglobal extends Application {
 		return eRptaServ;
 	}
 
-	public void setUsuario(String Usuario) {
-		this.Usuario = Usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		NombreUsuario = nombreUsuario;
+	}
+
+	public void setCodigoUsuario(String codigoUsuario) {
+		CodigoUsuario = codigoUsuario;
+	}
+
+	public void setCorreoUsuario(String correoUsuario) {
+		CorreoUsuario = correoUsuario;
 	}
 
 	public void setFecha(String Fecha) {
