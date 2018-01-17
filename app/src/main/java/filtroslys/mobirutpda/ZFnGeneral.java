@@ -20,7 +20,8 @@ public class ZFnGeneral {
 	static appglobal app;
 	static String RegCache;
 
-	@SuppressLint("NewApi")
+	//@SuppressLint("NewApi")
+	@SuppressLint("MissingPermission")
 	public static String ImeiCelular(Context context) {
 		app = ((appglobal) context);
 		String identifier = "";
