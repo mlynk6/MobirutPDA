@@ -1,0 +1,55 @@
+package filtroslzs.layer.negocio;
+
+import android.database.Cursor;
+import java.util.ArrayList;
+import filtroslzs.layer.data.datVendedor;
+import filtroslzs.layer.entidad.entVendedor;
+import filtroslzs.layer.entidad.entDataBase;
+
+public class negVendedor {
+    private entDataBase entDB;
+    private datVendedor procesomain;
+
+    public negVendedor(entDataBase entDB) {
+        this.entDB = entDB;
+        procesomain = new datVendedor(this.entDB);
+    }
+
+    public ArrayList<entVendedor> ListaVendedor() {
+        ArrayList<entVendedor> ListaDat = new ArrayList<entVendedor>();
+        Cursor cx = procesomain.ListaVendedor();
+        entVendedor objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entVendedor();
+            objEnt.setCodVendedor(cx.getString(0));
+            objEnt.setNombre(cx.getString(1));
+            objEnt.setApePat(cx.getString(2));
+            objEnt.setApeMat(cx.getString(3));
+            objEnt.setEstado(cx.getInt(4));
+            objEnt.setFecExpiracion(negZConst.getFecha(cx.getString(5)));
+            objEnt.setHabilitado(cx.getString(6));
+            ListaDat.add(objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
+    /*
+    public entVendedor AutenticaUsuario(String Usuario, String Clave) {
+        Cursor cx = procesomain.AutenticaUsuario(Usuario,Clave);
+        entVendedor objEnt = new entVendedor();
+
+        if (cx.moveToFirst()) {
+            objEnt.setUsuario(cx.getString(0));
+            objEnt.setNombre(cx.getString(1));
+            objEnt.setCorreo(cx.getString(2));
+            objEnt.setCodVendCia(cx.getString(3));
+            objEnt.setCodTransp(cx.getString(4));
+        }
+        cx.close();
+        cx=null;
+        return objEnt;
+    }*/
+}

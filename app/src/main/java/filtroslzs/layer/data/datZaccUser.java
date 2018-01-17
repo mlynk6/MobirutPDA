@@ -15,14 +15,14 @@ public class datZaccUser {
 
     public Cursor ListaUsuario() {
         sql = "Select c_usuario,c_nombre,c_clave,c_correo,c_esventa,c_sac "
-                + "from zacc_user";
+                + "from zacc_usuario";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
 
     public Cursor AutenticaUsuario(String Usuario, String Clave) {
         sql = "Select c_usuario,c_nombre,c_correo,c_codvendcia,c_codtransp "
-                + "from zacc_user "
+                + "from zacc_usuario "
                 + "where c_usuario ='" + Usuario + "' "
                 + "and c_clave ='" + Clave + "'";
         Cursor c = objDat.EjecutaSelect(sql);
