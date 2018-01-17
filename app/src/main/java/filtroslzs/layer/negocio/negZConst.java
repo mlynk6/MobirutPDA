@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 public class negZConst {
     public static int ComboDefCodEnt = -1;
+    public static String ComboDefCodStr = "**";
 
     public static Date getFecha(String fecha) {
         Date date = null;

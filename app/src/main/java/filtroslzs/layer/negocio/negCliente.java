@@ -7,6 +7,9 @@ import filtroslzs.layer.entidad.entCliente;
 import filtroslzs.layer.entidad.entCreditoxCliente;
 import filtroslzs.layer.entidad.entCtaCteCliente;
 import filtroslzs.layer.entidad.entTelefono;
+import filtroslzs.layer.entidad.entDireccionEnvio;
+import filtroslzs.layer.entidad.entCateClientexCia;
+import filtroslzs.layer.entidad.entSistemaVentaCiaxCliente;
 import filtroslzs.layer.entidad.entDataBase;
 
 public class negCliente {
@@ -176,5 +179,88 @@ public class negCliente {
         cx=null;
         return ListaDat;
     }
+
+    public ArrayList<entDireccionEnvio> ListaDireccionCombo(String Cliente,String Opc) {
+        ArrayList<entDireccionEnvio> ListaDat = new ArrayList<entDireccionEnvio>();
+        Cursor cx = procesomain.ListaDireccion(Cliente);
+        entDireccionEnvio objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entDireccionEnvio();
+            objEnt.setCodDirecc(cx.getInt(0));
+            objEnt.setDesDireccion(cx.getString(1));
+            objEnt.setGPS(cx.getString(2));
+            objEnt.setRutaPams(cx.getString(3));
+            ListaDat.add(objEnt);
+        }
+        if(Opc.length()>0){
+            objEnt = new entDireccionEnvio();
+            objEnt.setCodDirecc(negZConst.ComboDefCodEnt);objEnt.setDesDireccion(Opc);
+            ListaDat.add(0,objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
+    public ArrayList<entSistemaVentaCiaxCliente> ListaSistemaVentaCombo(String Cliente,String Cia,String Opc) {
+        ArrayList<entSistemaVentaCiaxCliente> ListaDat = new ArrayList<entSistemaVentaCiaxCliente>();
+        Cursor cx = procesomain.ListaSistemaVenta(Cliente,Cia);
+        entSistemaVentaCiaxCliente objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entSistemaVentaCiaxCliente();
+            objEnt.setDesSistVta(cx.getString(0));
+            objEnt.setCodSisVenta(cx.getInt(1));
+            objEnt.setGenerarLetra(cx.getString(2));
+            objEnt.setTipoSistVta(cx.getString(3));
+            ListaDat.add(objEnt);
+        }
+        if(Opc.length()>0){
+            objEnt = new entSistemaVentaCiaxCliente();
+            objEnt.setCodSisVenta(negZConst.ComboDefCodEnt);objEnt.setDesSistVta(Opc);
+            ListaDat.add(0,objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
+    public ArrayList<entCreditoxCliente> ListaLineaCreditoCombo(String Cliente,String Cia) {
+        ArrayList<entCreditoxCliente> ListaDat = new ArrayList<entCreditoxCliente>();
+        Cursor cx = procesomain.ListaLineaCredCombo(Cliente,Cia);
+        entCreditoxCliente objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entCreditoxCliente();
+            objEnt.setCodLinea(cx.getString(0));
+            objEnt.setDescripcion(cx.getString(1));
+            ListaDat.add(objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
+    public ArrayList<entCateClientexCia> ListaDsctoxCiaYSistVta(String Cliente, String Cia, String SistVenta){
+        ArrayList<entCateClientexCia> ListaDat = new ArrayList<entCateClientexCia>();
+        Cursor cx = procesomain.ListaDsctoxCiaYSistVta(Cliente,Cia,SistVenta);
+        entCateClientexCia objEnt;
+        while (cx.moveToNext()) {
+            objEnt = new entCateClientexCia();
+            objEnt.setCodCia(cx.getInt(0));
+            objEnt.setDesCia(cx.getString(1));
+            objEnt.setDescuentoCat(cx.getString(2));
+            objEnt.setDesSistVenta(cx.getString(3));
+            objEnt.SetDescuentoSistVta(cx.getString(4));
+            objEnt.setDescuentoSistVtaAD(cx.getString(5));
+            ListaDat.add(objEnt);
+        }
+        objEnt = null;
+        cx.close();
+        cx=null;
+        return ListaDat;
+    }
+
 
 }

@@ -3,6 +3,8 @@ package filtroslzs.layer.entidad;
 public class entCateClientexCia {
     private int n_codcliente=0,n_codcia=0,n_codcategoria=0;
     private String c_tipocliente="",c_segmento="",c_tipocategoria="";
+    private String c_descia="",c_descsistventa="";
+    private String c_descCat="",c_descSist="",c_descSistAd="";
 
     public int getCodCliente() {
         return n_codcliente;
@@ -52,4 +54,43 @@ public class entCateClientexCia {
         this.c_tipocategoria = c_tipocategoria;
     }
 
+    public String getDesCia() {
+        return c_descia;
+    }
+
+    public void setDesCia(String c_descia) {
+        this.c_descia = c_descia;
+    }
+
+    public String getDesSistVenta() {
+        return c_descsistventa;
+    }
+
+    public void setDesSistVenta(String c_descsistventa) {
+        this.c_descsistventa = c_descsistventa;
+    }
+
+    public String getDescuentoCat() {
+        return c_descCat;
+    }
+
+    public void setDescuentoCat(String c_descCat) {
+        this.c_descCat = c_descCat;
+    }
+
+    public String getDescuentoSistVta() {
+        return c_descSist;
+    }
+
+    public void SetDescuentoSistVta(String c_descSist) {
+        this.c_descSist = c_descSist;
+    }
+
+    public String getDescuentoSistVtaAD() {
+        return c_descSistAd;
+    }
+
+    public void setDescuentoSistVtaAD(String c_descSistAd) {
+        this.c_descSistAd = c_descSistAd;
+    }
 }
