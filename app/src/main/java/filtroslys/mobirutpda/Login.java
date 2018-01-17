@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.content.Context;
@@ -20,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import filtroslzs.layer.Task.TaskSincronizaUsuario;
 import filtroslzs.layer.entidad.*;
 import filtroslzs.layer.data.*;
@@ -31,7 +29,8 @@ public class Login extends AppCompatActivity {
     appglobal app;
     SharedPreferences preferences;
     Button btnLogin;
-    EditText txtUsuario , txtClave;
+    EditText txtUsuario,txtClave;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,43 +45,40 @@ public class Login extends AppCompatActivity {
         contexto = this;
         ConfigurarIni();
         EnlazarDB();
-        //CargarUsuario();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sUser , sClave  ;
-                sUser= txtUsuario.getText().toString().trim();
-                sClave = txtClave.getText().toString().trim();
-                if (TextUtils.isEmpty(sUser) || TextUtils.isEmpty(sClave)){
-                    CreateCustomToast("Falta ingresar el usuario y/o contraseña.",ZGConst.icon_warning,ZGConst.layot_warning);
-                    return;
+            String sUser,sClave;
+            sUser= txtUsuario.getText().toString().trim();
+            sClave = txtClave.getText().toString().trim();
+            if (TextUtils.isEmpty(sUser) || TextUtils.isEmpty(sClave)){
+                CreateCustomToast("Falta ingresar el usuario y/o contraseña.",ZGConst.icon_warning,ZGConst.layot_warning);
+                return;
+            }
+            else{
+                if (app.getUsuarioMaestroID().equals(sUser) && app.getUsuarioMaestroPW().equals(sClave)){
+                    CargarUsuario();
                 }
                 else{
-                    if  (app.getUsuarioMaestroID().equals(sUser) && app.getUsuarioMaestroPW().equals(sClave)){
-                        CargarUsuario();
+                    negZaccUser negZaccUser = new negZaccUser(app.getConexion());
+                    entZaccUser EUser= negZaccUser.AutenticaUsuario(sUser,ZFnGeneral.EncriptarPassword(sClave));
+                    if (TextUtils.isEmpty(EUser.getUsuario())){
+                        CreateCustomToast("Usuario o clave incorrecta",ZGConst.icon_error,ZGConst.layout_error);
+                        return;
                     }
                     else {
-                        entDataBase entDB = app.getConexion();
-                        negZaccUser negZaccUser = new negZaccUser(entDB);
-                        entZaccUser zuser= negZaccUser.AutenticaUsuario(sUser,ZFnGeneral.EncriptarPassword(sClave));
-                        if (TextUtils.isEmpty(zuser.getUsuario())){
-                            CreateCustomToast("Usuario o clave incorrecta",ZGConst.icon_error,ZGConst.layout_error);
-                            return;
-                        }
-                        else {
-                            SharedPreferences.Editor editor = preferences.edit();
-                            app.setCodigoUsuario(zuser.getUsuario());
-                            app.setNombreUsuario(zuser.getNombre());
-                            app.setCorreoUsuario(zuser.getCorreo());
-                            app.setCodVendCia(zuser.getCodVendCia());
-                            app.setCodTransp(zuser.getCodTransp());
-                            Intent intent = new Intent(Login.this,InicioMenu.class);
-                            startActivity(intent);
-                        }
-
+                        app.setCodigoUsuario(EUser.getUsuario());
+                        app.setNombreUsuario(EUser.getNombre());
+                        app.setCorreoUsuario(EUser.getCorreo());
+                        app.setCodVendCia(EUser.getCodVendCia());
+                        app.setCodTransp(EUser.getCodTransp());
+                        Intent intent = new Intent(Login.this,InicioMenu.class);
+                        startActivity(intent);
                     }
+
                 }
+            }
             }
         });
     }

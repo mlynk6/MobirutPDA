@@ -30,8 +30,7 @@ import java.util.ArrayList;
 
 import filtroslzs.layer.entidad.entZaccMenu;
 
-public class InicioMenu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class InicioMenu extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     String sNombreUsuario , sCorreoUsuario , sCodigoUsuario;
     SharedPreferences preferences;
     appglobal app;
@@ -86,31 +85,23 @@ public class InicioMenu extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_config, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.config) {
             ConfigurarVendTrans();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     public  void  ConfigurarVendTrans(){
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        final View formElementsView = inflater.inflate(R.layout.dialog_vendedor,
-                null, false);
+        final View formElementsView = inflater.inflate(R.layout.dialog_vendedor,null, false);
         final EditText txtCodUser = (EditText) formElementsView.findViewById(R.id.txtCodUsuarioDialog);
         final CheckBox chkVendedor= (CheckBox)formElementsView.findViewById(R.id.chkVendedor);
         final CheckBox chkTransp = (CheckBox)formElementsView.findViewById(R.id.chkTransp);
@@ -118,7 +109,7 @@ public class InicioMenu extends AppCompatActivity
         final EditText txtClaveVend = (EditText)formElementsView.findViewById(R.id.txtClaveVendor);
         final EditText  txtCodTransp = (EditText)formElementsView.findViewById(R.id.txtCodTransp);
         final EditText txtClaveTransp = (EditText)formElementsView.findViewById(R.id.txtClaveTransp);
-        txtCodUser.setText(app.getUsuario());
+        txtCodUser.setText(app.getCodigoUsuario());
         txtCodUser.setEnabled(false);
 
         chkTransp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -137,31 +128,26 @@ public class InicioMenu extends AppCompatActivity
         });
 
         new AlertDialog.Builder(InicioMenu.this).setView(formElementsView)
-                .setTitle("Configuración")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (chkTransp.isChecked()) {
-                    negTransportista ntramsp = new negTransportista(app.getConexion());
-                     boolean autentic =  ntramsp.GetTranspAutenticado(txtCodTransp.getText().toString().trim(),txtClaveTransp.getText().toString().trim());
-                     //if (aute)
-                }
-
-            }
-        })
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
+            .setTitle("Configuración")
+            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if (chkTransp.isChecked()) {
+                        negTransportista ntramsp = new negTransportista(app.getConexion());
+                        boolean autentic =  ntramsp.GetTranspAutenticado(txtCodTransp.getText().toString().trim(),txtClaveTransp.getText().toString().trim());
                     }
-                })
-                .show();
+                }
+            })
+            .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            }).show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
       /*  if (id == R.id.nav_camera) {
@@ -183,36 +169,28 @@ public class InicioMenu extends AppCompatActivity
         return true;
     }
 
-    public   void  LoadNavDrawMenu (Menu menu){
-        ArrayList<entZaccMenu> listamenu= new ArrayList<>();
+    public void LoadNavDrawMenu(Menu menu){
+        ArrayList<entZaccMenu> LstMenu = new ArrayList<>();
         negZaccMenu negMenu = new negZaccMenu(app.getConexion());
-        listamenu = negMenu.ListaMenuHome("MMONTERO");
+        LstMenu = negMenu.ListaMenuHome("MMONTERO");
 
-        if (listamenu.size()>0){
-            //Cargando items menu padres
-            for (int  i = 0 ; i < listamenu.size();i++){
-                entZaccMenu zmenu = listamenu.get(i);
-                if (zmenu.getTipo().equals("P")){
-                   Menu m = menu.addSubMenu(Integer.valueOf(zmenu.getIdReg()),Integer.valueOf(zmenu.getIdReg()), i,zmenu.getNombre());
-                   CreandoMenuHijos(listamenu,zmenu.getIdReg(),m);
+        if (LstMenu.size()>0){
+            for (int i=0;i<LstMenu.size();i++){
+                entZaccMenu EMenu = LstMenu.get(i);
+                if (EMenu.getTipo().equals("P")){
+                   Menu m = menu.addSubMenu(Integer.valueOf(EMenu.getIdReg()),Integer.valueOf(EMenu.getIdReg()), i,EMenu.getNombre());
+                   CreandoMenuHijos(LstMenu,EMenu.getIdReg(),m);
                 }
             }
-
-
         }
-
-
     }
 
-    public  void CreandoMenuHijos (ArrayList<entZaccMenu> listamenu ,String menuPadreId , Menu menuHijo){
-        for (int i  = 0 ;  i <  listamenu.size(); i++) {
-            entZaccMenu itemMenu= listamenu.get(i);
-            if (itemMenu.getTipo().equals("H")&& menuPadreId.equals(itemMenu.getIdRef())) {
-
-                menuHijo.add(Integer.valueOf(menuPadreId), Integer.valueOf(itemMenu.getIdReg()), i, itemMenu.getNombre()).setIcon(R.drawable.ic_navmenu);
+    public void CreandoMenuHijos(ArrayList<entZaccMenu> Lstmenu ,String menuPadreId , Menu menuHijo){
+        for (int i=0;i<Lstmenu.size();i++) {
+            entZaccMenu EMenu= Lstmenu.get(i);
+            if (EMenu.getTipo().equals("H")&& menuPadreId.equals(EMenu.getIdRef())) {
+                menuHijo.add(Integer.valueOf(menuPadreId), Integer.valueOf(EMenu.getIdReg()), i, EMenu.getNombre()).setIcon(R.drawable.ic_navmenu);
             }
         }
     }
-
-
 }
