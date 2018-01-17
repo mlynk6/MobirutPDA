@@ -1,7 +1,15 @@
 package filtroslzs.layer.entidad;
 
 public class entZaccMenu {
-    private String c_idreg="",c_nombre="",c_tipo="",c_idref="",c_inicio="";
+    private String c_usuario="",c_idreg="",c_nombre="",c_tipo="",c_idref="",c_nivel="";
+
+    public String getUsuario() {
+        return c_usuario;
+    }
+
+    public void setUsuario(String c_usuario) {
+        this.c_usuario = c_usuario;
+    }
 
     public String getIdReg() {
         return c_idreg;
@@ -35,11 +43,11 @@ public class entZaccMenu {
         this.c_idref = c_idref;
     }
 
-    public String getInicio() {
-        return c_inicio;
+    public String getNivel() {
+        return c_nivel;
     }
 
-    public void setInicio(String c_inicio) {
-        this.c_inicio = c_inicio;
+    public void setNivel(String c_nivel) {
+        this.c_nivel = c_nivel;
     }
 }

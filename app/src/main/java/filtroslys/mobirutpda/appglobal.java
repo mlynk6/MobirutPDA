@@ -5,7 +5,7 @@ import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
 public class appglobal extends Application {
-	private String Usuario, Fecha, CodigoVendedor, NombreVendedor, NombreCia, sx;
+	private String Usuario, Fecha, CodigoVendedor="MAESTRO", NombreVendedor, NombreCia, sx;
 	private String USinc="N",UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
 
 	// Configuracion Predeterminada del WebService, cambia al momento de
@@ -13,10 +13,10 @@ public class appglobal extends Application {
 	private String soapnombreweb = "Mobirut";
 	private String soapnamespace = "http://www.example.org/ObtenerDatos/";
 	private String soapmetodo = "solicitarInformacion";
-	private String soapip = "190.187.181.56";
-	private String soappuerto = "80";
-	/*private String soapip = "100.100.100.186";//
-	private String soappuerto = "8080";*/
+	/*private String soapip = "190.187.181.56";
+	private String soappuerto = "80";*/
+	private String soapip = "100.100.100.186";
+	private String soappuerto = "8080";
 	private String soapaccion = soapnamespace + soapmetodo;
 	private String soapurl = "http://" + soapip + ":" + soappuerto + "/" + soapnombreweb + "/services/ObtenerDatosSOAP";
 	private String urlreclamogarantia = "http://" + soapip + ":" + soappuerto + "/" + "webupload/uploadreclamogarantia.jsp";
@@ -35,7 +35,7 @@ public class appglobal extends Application {
 	private String upk = "638;8>;9B=B", sfk = "37;8:<",sfk2 = "27<76<7@";
 	private int regkits = 20;
 
-	private int CodCia, clientesel;
+	private int CodCia=1, clientesel=0;
 	private SQLiteDatabase db;
 	private entDataBase entConnDB;
 	private String esindustrial = "N";
@@ -51,7 +51,8 @@ public class appglobal extends Application {
 	private boolean PedidoMasivo = false;
 	private boolean esSuperAdmin = false;
 	private boolean esMercaderista = false;
-	
+	private entRptaServ eRptaServ = new entRptaServ();
+
 	public String getUsuario() {
 		return Usuario;
 	}
@@ -226,6 +227,13 @@ public class appglobal extends Application {
 
 	public String getUsuarioSincronizado(){
 		return USinc;
+	}
+
+	public entRptaServ getRptaServ() {
+		if(eRptaServ==null){
+			eRptaServ=new entRptaServ();
+		}
+		return eRptaServ;
 	}
 
 	public void setUsuario(String Usuario) {
@@ -404,4 +412,7 @@ public class appglobal extends Application {
 		this.USinc = USinc;
 	}
 
+	public void setRptaServ(entRptaServ eRptaServ) {
+		this.eRptaServ = eRptaServ;
+	}
 }

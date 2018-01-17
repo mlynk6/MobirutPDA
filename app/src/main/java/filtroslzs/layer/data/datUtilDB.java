@@ -3,6 +3,7 @@ package filtroslzs.layer.data;
 import filtroslzs.layer.entidad.*;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.util.Log;
 
 public class datUtilDB {
     private entDataBase entDB;
@@ -37,11 +38,11 @@ public class datUtilDB {
             entDB.getDBaseDatos().setTransactionSuccessful();
             valor = 1;
         } catch (SQLException e) {
+            Log.e("eero",e.getMessage());
             valor = 0;
         } finally {
             entDB.getDBaseDatos().endTransaction();
         }
         return valor;
     }
-
 }

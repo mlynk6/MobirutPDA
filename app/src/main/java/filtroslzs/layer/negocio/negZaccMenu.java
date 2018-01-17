@@ -14,9 +14,9 @@ public class negZaccMenu {
         procesomain = new datZaccMenu(this.entDB);
     }
 
-    public ArrayList<entZaccMenu> ListaMenuHome() {
+    public ArrayList<entZaccMenu> ListaMenuHome(String Usuario) {
         ArrayList<entZaccMenu> ListaDat = new ArrayList<entZaccMenu>();
-        Cursor cx = procesomain.ListaMenuHome();
+        Cursor cx = procesomain.ListaMenuHome(Usuario);
         entZaccMenu objEnt;
         while (cx.moveToNext()) {
             objEnt = new entZaccMenu();
@@ -32,8 +32,8 @@ public class negZaccMenu {
         return ListaDat;
     }
 
-    public boolean AccesoMenu(String IdReg) {
-        Cursor cx = procesomain.AccesoMenu(IdReg);
+    public boolean AccesoMenu(String Usuario,String IdReg) {
+        Cursor cx = procesomain.AccesoMenu(Usuario,IdReg);
         entZaccUser objEnt = new entZaccUser();
         boolean bVal = false;
 
