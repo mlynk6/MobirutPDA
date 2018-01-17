@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
                             return;
                         }
                         else {
-                            Intent intent = new Intent(Login.this,InicioMainActivity.class);
+                            Intent intent = new Intent(Login.this,InicioMenu.class);
                             startActivity(intent);
 
                         }
