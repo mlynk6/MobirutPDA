@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                         app.setCorreoUsuario(EUser.getCorreo());
                         app.setCodVendCia(EUser.getCodVendCia());
                         app.setCodTransp(EUser.getCodTransp());
-                        app.setCodigoVendedor(EUser.getCodVendedor());
+                        //app.setCodigoVendedor(EUser.getCodVendedor());
                         Intent intent = new Intent(Login.this,InicioMenu.class);
                         startActivity(intent);
                     }

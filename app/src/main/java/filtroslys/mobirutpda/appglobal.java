@@ -11,7 +11,7 @@ public class appglobal extends Application {
 	private String Fecha, USinc="N";
 	private String CodigoUsuario="",NombreUsuario="",CorreoUsuario="";
 	private String UMaestroId="MAESTRO",UMaestroClave="MAESTRO";
-	private String CodigoVendedor="MAESTRO", NombreVendedor = "";
+	private String CodigoVendedor="RCAMPOS", NombreVendedor = "";
 	private int CodCia=1; String NombreCia = "";
 	private String codVendCia="", codTransp="";
 

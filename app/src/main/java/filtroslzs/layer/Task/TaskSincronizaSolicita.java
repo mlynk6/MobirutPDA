@@ -3,6 +3,8 @@ package filtroslzs.layer.Task;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
@@ -10,6 +12,8 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import java.util.ArrayList;
 import java.util.Vector;
+
+import filtroslys.mobirutpda.InicioSincroniza;
 import filtroslys.mobirutpda.Login;
 import filtroslys.mobirutpda.ZGConst;
 import filtroslys.mobirutpda.appglobal;
@@ -39,7 +43,7 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
         progressDialog.dismiss();
-        Login UiForm = (Login)context;
+        InicioSincroniza UiForm = (InicioSincroniza)context;
         UiForm.RptaCargarUsuario(eRpta);
         UiForm=null;
     }
@@ -49,15 +53,17 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
         SoapObject request = new SoapObject(app.getSoapNamespace(),app.getSoapMetodo());
         request.addProperty("tipo", "Solicita");
         request.addProperty("codven",app.getCodigoVendedor());
+        Log.i("cod vend", app.getCodigoVendedor());
         request.addProperty("tconex",app.getdbWebService());
         ArrayList<String> LstData = new ArrayList<String>();
 
         for(int i=0;i<LstMenu.size();i++){
+            Log.i("Menu Nº" + String.valueOf(i),LstMenu.get(i));
             switch (LstMenu.get(i)){
-                case "VALIDA":
+                case "0106010100":
                     LstData.add("sp_validar_contraseña");
                     break;
-                case "MAESTRO":
+                case "0106010200":
                     LstData.add("TBC_COMPAÑIA");
                     LstData.add("TBD_VENDXCIA");
                     LstData.add("TBC_VENDEDOR");
@@ -85,7 +91,7 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
                     LstData.add("TBC_LLAMADAS");
                     LstData.add("TBC_MOTNOCARTERA");
                     LstData.add("TBC_PARAMTABLA");
-                case "CLIENTE":
+                case "0106010300":
                     LstData.add("TBC_CLIENTE");
                     LstData.add("TBD_DIRECCIONENVIO");
                     LstData.add("TBD_CREDITOXCLIENTE");
@@ -100,11 +106,11 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
                     LstData.add("TBC_ITEMSEGMENTOCAT");
                     LstData.add("TBC_DSCTOXCLIENTEITEM");
                     break;
-                case "ADICIONAL":
+                case "0106010400":
                     LstData.add("TBC_CATECLIENTEXCIA");
                     LstData.add("TBC_SISTEMAVENTACIAXCLIENTE");
                     break;
-                case "PRODUCTO":
+                case "0106010500":
                     LstData.add("TBC_PRODUCTO");
                     LstData.add("TBC_PREFIJOPRO");
                     LstData.add("TBC_SUFIJOPRO");
@@ -118,29 +124,30 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
                     LstData.add("TBC_PROMOCIONPARTIR");
                     LstData.add("TBC_PROMOCIONSMLITEM");
                     break;
-                case "OFERTA":
+                case "0106010600":
                     LstData.add("TBC_OFERTAS");
                     break;
-                case "PRECIONETO":
+                case "0106010700":
                     LstData.add("TBC_PRECIONETOPROD");
                     break;
-                case "RUTEO":
+                case "0106010800":
                     LstData.add("TBC_CLIENTERUTA");
                     break;
-                case "STOCK":
+                case "0106010900":
                     LstData.add("TBC_STOCK");
                     break;
-                case "LISTAKIT":
+                case "0106011000":
                     LstData.add("TBC_KITS");
                     LstData.add("TBC_APLICACIONES");
                     break;
-                case "OTROAMES":
+                case "0106011100":
                     LstData.add("TBC_MARCA");
                     LstData.add("TBC_MODELO");
                     break;
             }
         }
-
+        Log.i("ind",String.valueOf(LstMenu.size()));
+        Log.i("ind",String.valueOf(LstData.size()));
         for (int i=0;i<LstData.size();i++) {
             request.addProperty(getProperty("arreglo", LstData.get(i)));
         }
@@ -177,7 +184,9 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
         if (eRpta.getRptaServ() == 1) {
             Vector<String> result = null;
             try {
+
                 result = (Vector<String>) envelope.getResponse();
+                //Log.i("result" , envelope.getResponse().toString());
             } catch (Exception e) {
                 eRpta.setRptaServ(-3);
                 eRpta.setMsjErr(e.getMessage());

@@ -1,6 +1,8 @@
 package filtroslzs.layer.adapt;
 
 import java.util.ArrayList;
+
+import filtroslys.mobirutpda.ZFnGeneral;
 import filtroslzs.layer.entidad.entCreditoxCliente;
 import filtroslys.mobirutpda.R;
 import android.content.Context;
