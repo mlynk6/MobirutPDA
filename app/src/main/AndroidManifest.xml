@@ -31,7 +31,8 @@
         <activity
             android:name=".InicioMenu"
             android:label="@string/title_activity_inicio_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".BuscarCliente"></activity>
     </application>
 
 </manifest>
