@@ -10,4 +10,6 @@ public class ZGConst {
     public static int icon_error = R.drawable.icn_error_24b;
 
     public static String TxtNinguno = "Ninguno";
+    public static String ValorNo = "NO";
+    public static String ValorSi = "SI";
 }

@@ -10,7 +10,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import java.util.ArrayList;
 import android.view.View.OnClickListener;
-import filtroslzs.layer.entidad.entCliente;
 import filtroslzs.layer.entidad.entPedido;
 import filtroslzs.layer.negocio.negPedido;
 
@@ -18,7 +17,7 @@ public class BuscarPedido extends AppCompatActivity {
     appglobal app;
     Context contexto;
     ListView lvPedido;
-    TextView lblPedido,lblCliente;
+    TextView txtPedido,txtCliente;
     CheckBox chkEnviados;
     int nPosicion = -1;
     String sFrm="";
@@ -35,8 +34,8 @@ public class BuscarPedido extends AppCompatActivity {
     }
 
     public void EnlazarControles() {
-        lblPedido = (TextView) findViewById(R.id.lblPedido);
-        lblCliente = (TextView) findViewById(R.id.lblCliente);
+        txtPedido = (TextView) findViewById(R.id.txtPedido);
+        txtCliente = (TextView) findViewById(R.id.txtCliente);
         chkEnviados = (CheckBox) findViewById(R.id.ChkVerEnviados);
         lvPedido = (ListView)findViewById(R.id.lvPedido);
         LstPedido = new ArrayList<entPedido>();
@@ -57,6 +56,23 @@ public class BuscarPedido extends AppCompatActivity {
             setResult(Activity.RESULT_OK, intent);
             this.finish();*/
         }
+    }
+
+    public void EventoBuscar(View view) {
+        BuscarRegistro();
+    }
+
+    public void BuscarRegistro() {
+        negPedido objNeg = new negPedido(app.getConexion());
+        String sSinc = (chkEnviados.isChecked()) ? ZGConst.ValorSi : ZGConst.ValorNo;
+        String sPedido = txtPedido.getText().toString().trim();
+        String sCliente = txtCliente.getText().toString().trim();
+        String sCodCia = String.valueOf(app.getCodCia());
+
+        LstPedido = objNeg.ListaPedido(sPedido,sCliente,sCodCia,sSinc);
+        //lvdatos.setAdapter(new BuscarPedidoadp(this, pedidos));
+        objNeg = null;
+        nPosicion = -1;
     }
 
 }

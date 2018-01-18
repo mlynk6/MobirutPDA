@@ -56,7 +56,7 @@
                         android:layout_gravity="fill_vertical"/>
 
                     <EditText
-                        android:id="@+id/lblPedido"
+                        android:id="@+id/txtPedido"
                         android:layout_column="2"
                         android:inputType="number"
                         android:layout_height="25dp"
@@ -92,7 +92,7 @@
                         android:layout_gravity="fill_vertical"/>
 
                     <EditText
-                        android:id="@+id/lblCliente"
+                        android:id="@+id/txtCliente"
                         android:layout_column="2"
                         android:capitalize="characters"
                         android:layout_height="25dp"
