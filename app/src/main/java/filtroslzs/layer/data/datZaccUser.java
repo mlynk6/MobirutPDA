@@ -22,9 +22,9 @@ public class datZaccUser {
 
     public Cursor AutenticaUsuario(String Usuario, String Clave) {
         sql = "Select c_usuario,c_nombre,c_correo,c_codvendcia,c_codtransp "
-                + "from zacc_usuario "
-                + "where c_usuario ='" + Usuario + "' "
-                + "and c_clave ='" + Clave + "'";
+            + "from zacc_usuario "
+            + "where c_usuario ='" + Usuario + "' "
+            + "and c_clave ='" + Clave + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }

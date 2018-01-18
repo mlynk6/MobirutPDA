@@ -24,9 +24,9 @@ public class datZaccMenu {
 
     public Cursor GetAccesoMenu(String Usuario,String IdReg) {
         sql = "Select count(1) "
-                + "from zacc_menu "
-                + "where c_usuario ='" + Usuario + "' "
-                + "and c_idreg ='" + IdReg + "'";
+            + "from zacc_menu "
+            + "where c_usuario ='" + Usuario + "' "
+            + "and c_idreg ='" + IdReg + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
