@@ -18,12 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import filtroslzs.layer.entidad.entDataBase;
+import android.widget.Toast;
 import filtroslzs.layer.negocio.*;
 
 import java.util.ArrayList;
@@ -67,10 +69,10 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
         Menu m = navigationView.getMenu();
         LoadNavDrawMenu(m);
         View header=navigationView.getHeaderView(0);
-        TextView name = (TextView)header.findViewById(R.id.txtUserNav);
-        TextView  email = (TextView)header.findViewById(R.id.txtMailNav);
-        name.setText(sNombreUsuario);
-        email.setText(sCorreoUsuario);
+        TextView name = header.findViewById(R.id.txtUserNav);
+        TextView  email = header.findViewById(R.id.txtMailNav);
+        name.setText(app.getNombreUsuario());
+        email.setText(app.getCorreoUsuario());
     }
 
     @Override
@@ -102,13 +104,13 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
     public  void  ConfigurarVendTrans(){
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View formElementsView = inflater.inflate(R.layout.dialog_vendedor,null, false);
-        final EditText txtCodUser = (EditText) formElementsView.findViewById(R.id.txtCodUsuarioDialog);
-        final CheckBox chkVendedor= (CheckBox)formElementsView.findViewById(R.id.chkVendedor);
-        final CheckBox chkTransp = (CheckBox)formElementsView.findViewById(R.id.chkTransp);
-        final EditText txtCodVend = (EditText)formElementsView.findViewById(R.id.txtCodVendedor);
-        final EditText txtClaveVend = (EditText)formElementsView.findViewById(R.id.txtClaveVendor);
-        final EditText  txtCodTransp = (EditText)formElementsView.findViewById(R.id.txtCodTransp);
-        final EditText txtClaveTransp = (EditText)formElementsView.findViewById(R.id.txtClaveTransp);
+        final EditText txtCodUser =  formElementsView.findViewById(R.id.txtCodUsuarioDialog);
+        final CheckBox chkVendedor= formElementsView.findViewById(R.id.chkVendedor);
+        final CheckBox chkTransp = formElementsView.findViewById(R.id.chkTransp);
+        final EditText txtCodVend = formElementsView.findViewById(R.id.txtCodVendedor);
+        final EditText txtClaveVend = formElementsView.findViewById(R.id.txtClaveVendor);
+        final EditText  txtCodTransp = formElementsView.findViewById(R.id.txtCodTransp);
+        final EditText txtClaveTransp = formElementsView.findViewById(R.id.txtClaveTransp);
         txtCodUser.setText(app.getCodigoUsuario());
         txtCodUser.setEnabled(false);
 
@@ -135,7 +137,31 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
                     if (chkTransp.isChecked()) {
                         negTransportista ntramsp = new negTransportista(app.getConexion());
                         boolean autentic =  ntramsp.GetTranspAutenticado(txtCodTransp.getText().toString().trim(),txtClaveTransp.getText().toString().trim());
+                        if (autentic){
+                            app.setCodTransp(txtCodTransp.getText().toString().trim());
+                        }
+                        else {
+                            CreateCustomToast("Codigo transportista y/o clave  son incorrectos.",ZGConst.icon_error,ZGConst.layout_error);
+                            return;
+                        }
                     }
+
+                    if (chkVendedor.isChecked()) {
+                        negVendedor nVend = new negVendedor(app.getConexion());
+                        boolean autentic2 = nVend.GetVendCiaAutenticado(txtCodVend.getText().toString().trim(),txtClaveVend.getText().toString().trim());
+                        if (autentic2){
+                            app.setCodVendCia(txtCodVend.getText().toString().trim());
+                        }
+                        else {
+                            CreateCustomToast("Codigo vendedor y/o clave  son incorrectos.",ZGConst.icon_error,ZGConst.layout_error);
+                            return;
+                        }
+                    }
+
+                    if (chkTransp.isChecked() || chkVendedor.isChecked()){
+                        CreateCustomToast("Información guardada correctamente.",ZGConst.icon_succes,ZGConst.layout_success);
+                    }
+
                 }
             })
             .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -148,7 +174,7 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
+       // int id = item.getItemId();
 
       /*  if (id == R.id.nav_camera) {
             // Handle the camera action
@@ -192,5 +218,30 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
                 menuHijo.add(Integer.valueOf(menuPadreId), Integer.valueOf(EMenu.getIdReg()), i, EMenu.getNombre()).setIcon(R.drawable.ic_navmenu);
             }
         }
+    }
+    public void CreateCustomToast(String msj, int icon, int backgroundLayout)
+    {
+
+        LayoutInflater infator = getLayoutInflater();
+        View layout = infator.inflate(R.layout.toast_custom, (ViewGroup) findViewById(R.id.toastlayout));
+        TextView toastText = (TextView) layout.findViewById(R.id.txtDisplayToast);
+        ImageView imgIcon = (ImageView) layout.findViewById(R.id.imgToastSucc);
+        LinearLayout parentLayout = (LinearLayout) layout.findViewById(R.id.toastlayout);
+        imgIcon.setImageResource(icon);
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            parentLayout.setBackgroundDrawable(getResources().getDrawable(backgroundLayout));
+        } else {
+            parentLayout.setBackground(getResources().getDrawable(backgroundLayout));
+        }
+
+
+        toastText.setText(msj);
+        Toast toast = new Toast(InicioMenu.this);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
+
     }
 }

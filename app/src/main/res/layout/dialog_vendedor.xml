@@ -86,7 +86,7 @@
                 android:ems="8"
                 android:enabled="false"
                 android:hint="Clave"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:padding="2dp" />
 
         </LinearLayout>
@@ -140,7 +140,7 @@
                 android:ems="8"
                 android:enabled="false"
                 android:hint="Clave"
-                android:inputType="textPersonName"
+                android:inputType="textPassword"
                 android:padding="2dp" />
 
         </LinearLayout>
