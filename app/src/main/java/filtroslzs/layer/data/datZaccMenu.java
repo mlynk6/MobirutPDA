@@ -13,11 +13,11 @@ public class datZaccMenu {
         objDat = new datUtilDB(this.entDB);
     }
 
-    public Cursor ListaMenuHome(String Usuario) {
+    public Cursor ListaMenu(String Usuario, String Nivel) {
         sql = "Select c_idreg,c_nombre,c_tipo,c_idref "
                 + "from zacc_menu "
                 + "where c_usuario='" + Usuario + "' "
-                + "and c_nivel ='IN'";
+                + "and c_nivel ='" + Nivel + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }

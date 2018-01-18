@@ -17,9 +17,9 @@ public class negZaccMenu {
         procesomain = new datZaccMenu(this.entDB);
     }
 
-    public ArrayList<entZaccMenu> ListaMenuHome(String Usuario) {
+    public ArrayList<entZaccMenu> ListaMenu(String Usuario,String Nivel) {
         ArrayList<entZaccMenu> ListaDat = new ArrayList<entZaccMenu>();
-        Cursor cx = procesomain.ListaMenuHome(Usuario);
+        Cursor cx = procesomain.ListaMenu(Usuario,Nivel);
         entZaccMenu objEnt;
         while (cx.moveToNext()) {
             objEnt = new entZaccMenu();

@@ -6,4 +6,13 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_inicio_menu">InicioMenu</string>
+
+    <string name="ingresartexto">...</string>
+
+    <string name="btn_buscar">Buscar</string>
+    <string name="btn_Limpiar">Limpiar</string>
+
+    <string name="lbl_buscarclientetitulo">Búsqueda de Cliente</string>
+    <string name="lbl_buscarclientecodigo">Código</string>
+    <string name="lbl_buscarclienterazon">Cliente</string>
 </resources>
