@@ -2,12 +2,14 @@ package filtroslys.mobirutpda;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -174,8 +176,15 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-       // int id = item.getItemId();
+        //Log.i("id menu" ,String.valueOf(item.getItemId()));
+        int id = item.getItemId();
+        switch (id){
+            case  106010000 :
+                Intent intent = new Intent(getApplicationContext(),InicioSincroniza.class);
+                startActivity(intent);
 
+
+        }
       /*  if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
@@ -198,7 +207,7 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
     public void LoadNavDrawMenu(Menu menu){
         ArrayList<entZaccMenu> LstMenu = new ArrayList<>();
         negZaccMenu negMenu = new negZaccMenu(app.getConexion());
-        LstMenu = negMenu.ListaMenuHome("MMONTERO");
+        LstMenu = negMenu.ListaMenu("MMONTERO","IN");
 
         if (LstMenu.size()>0){
             for (int i=0;i<LstMenu.size();i++){
