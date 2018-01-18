@@ -11,8 +11,43 @@
 
     <string name="btn_buscar">Buscar</string>
     <string name="btn_Limpiar">Limpiar</string>
+    <string name="btn_atras">Atras</string>
+    <string name="btn_nuevabusq">Nueva búsqueda</string>
 
     <string name="lbl_buscarclientetitulo">Búsqueda de Cliente</string>
     <string name="lbl_buscarclientecodigo">Código</string>
     <string name="lbl_buscarclienterazon">Cliente</string>
+
+    <string name="lbl_infocliente_titulo">Dat Cliente</string>
+    <string name="btn_infocliente_mod">Mod.</string>
+    <string name="btn_infocliente_prom">Prom.</string>
+    <string name="btn_infocliente_datos">Datos</string>
+    <string name="lbl_infocliente_codigo">Cód:</string>
+    <string name="lbl_infocliente_nombre">Cliente:</string>
+    <string name="lbl_infocliente_docfiscal">Doc.F:</string>
+    <string name="lbl_infocliente_direccion">Dirección:</string>
+    <string name="lbl_infocliente_segmento">Segmento:</string>
+    <string name="lbl_infocliente_categoria">Categoria:</string>
+    <string name="lbl_infocliente_telefono">Teléfono:</string>
+    <string name="lbl_infocliente_telefono_promt">Teléfono</string>
+    <string name="lbl_infocliente_agentret">Age.Reten:</string>
+    <string name="lbl_infocliente_aval">Aval:</string>
+    <string name="btn_infocliente_pedido">Pedido</string>
+    <string name="btn_infocliente_visita">Visita</string>
+    <string name="btn_infocliente_gestion">Gestion</string>
+    <string name="btn_infocliente_estped">EstPed</string>
+    <string name="lbl_infocliente_titulo_lineacred">Líneas de Crédito</string>
+    <string name="lbl_infocliente_porcentajedoc">Docs(%)</string>
+    <string name="lbl_infocliente_titulo_ctacte">Cuenta Corriente</string>
+
+    <string name="lbl_infocliente_lincred_aprobado">Aprob:</string>
+    <string name="lbl_infocliente_lincred_disponible">Dispon:</string>
+
+    <string name="lbl_infocliente_ctacte_documento">Doc:</string>
+    <string name="lbl_infocliente_ctacte_importe"></string>
+    <string name="lbl_infocliente_ctacte_fecha">Fecha:</string>
+    <string name="lbl_infocliente_ctacte_dias">Dias:</string>
+    <string name="lbl_infocliente_ctacte_coduni">C.Uni:</string>
+    <string name="lbl_infocliente_ctacte_permitido">Permitido:</string>
+    <string name="lbl_infocliente_ctacte_docref">D.Ref:</string>
 </resources>

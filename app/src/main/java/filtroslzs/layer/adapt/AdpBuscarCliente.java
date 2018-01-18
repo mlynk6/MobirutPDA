@@ -38,37 +38,37 @@ public class AdpBuscarCliente extends BaseAdapter {
 		final TextView txtCodigo, txtNombre, txtDireccion, txtDescuento, txtSegmento, txtCanal, txtHtmlLst;
 		String sHtml = "";
 
-		final entCliente ECliente = LstData.get(posicion);
+		final entCliente EData = LstData.get(posicion);
 		if (v == null) {
 			v = li.inflate(R.layout.buscar_cliente_item, null);
 		}
 
 		txtCodigo = (TextView) v.findViewById(R.id.lblCodigo);
-		txtCodigo.setText(String.valueOf(ECliente.getCodCliente()));
+		txtCodigo.setText(String.valueOf(EData.getCodCliente()));
 
 		txtNombre = (TextView) v.findViewById(R.id.lblNombre);
-		txtNombre.setText(ECliente.getRazSocial());
+		txtNombre.setText(EData.getRazSocial());
 
 		txtDireccion = (TextView) v.findViewById(R.id.lblDireccion);
-		txtDireccion.setText(ECliente.getDireccion());
+		txtDireccion.setText(EData.getDireccion());
 
 		txtDescuento = (TextView) v.findViewById(R.id.lblDescuento);
-		txtDescuento.setText(ECliente.getDescuento());
+		txtDescuento.setText(EData.getDescuento());
 
 		txtSegmento = (TextView) v.findViewById(R.id.lblSegmento);
-		if (ECliente.getSegmento() != null) {
-			txtSegmento.setText(ECliente.getSegmento());
+		if (EData.getSegmento() != null) {
+			txtSegmento.setText(EData.getSegmento());
 		}
 
 		txtHtmlLst = (TextView) v.findViewById(R.id.lblHtmlLst);
-		if (ECliente.getTextoLstHtml() != null) {
-			sHtml = ECliente.getTextoLstHtml();
+		if (EData.getTextoLstHtml() != null) {
+			sHtml = EData.getTextoLstHtml();
 		}
 		txtHtmlLst.setText(Html.fromHtml(sHtml));
 		
 		txtCanal = (TextView) v.findViewById(R.id.lblCanal);
-		if (ECliente.getTipoCategoria() != null) {
-			txtCanal.setText(ECliente.getTipoCategoria());
+		if (EData.getTipoCategoria() != null) {
+			txtCanal.setText(EData.getTipoCategoria());
 		}
 
 		return v;

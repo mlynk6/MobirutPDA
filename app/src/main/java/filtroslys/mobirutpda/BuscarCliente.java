@@ -93,7 +93,9 @@ public class BuscarCliente extends AppCompatActivity {
 
     public void Seleccionar(){
         if (LstCliente.size() > 0 && nPosicion > -1){
-
+            if(app.getClienteId()==0){
+                app.setClienteId(LstCliente.get(nPosicion).getCodCliente());
+            }
             Intent intent = new Intent().setClass(this,BuscarCliente.class);
             intent.putExtra("Formulario",sFrm);
             intent.putExtra("CodCliente",LstCliente.get(nPosicion).getCodCliente());

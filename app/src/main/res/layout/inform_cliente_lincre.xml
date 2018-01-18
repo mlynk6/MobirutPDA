@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <!-- APROBADO -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Moneda 1 -->
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_gravity="right"
+                android:text="@string/lbl_infocliente_lincred_aprobado">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblMonedaAprobadoOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblAprobadoOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_gravity="right">
+            </TextView>
+
+            <!-- Moneda 2 -->
+            <TextView
+                android:id="@+id/lblMonedaAprobadoDestino"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblAprobadoDestino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+        </LinearLayout>
+
+        <!-- DISPONIBLE -->
+        <LinearLayout
+            android:id="@+id/layer_disponible"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Moneda 1 -->
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_gravity="right"
+                android:text="@string/lbl_infocliente_lincred_disponible">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblMonedaDisponibleOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblDisponibleOrigen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+
+            <!-- Moneda 2 -->
+            <TextView
+                android:id="@+id/lblMonedaDisponibleDestino"
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_height="wrap_content"
+                android:textSize="16dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblDisponibleDestino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context="filtroslys.mobirutpda.InicioMenu">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="2dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Numero Documento -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="@string/lbl_infocliente_ctacte_documento">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblNumDoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+
+            <!-- Moneda y Deuda -->
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_gravity="right"
+                    android:text="@string/lbl_infocliente_ctacte_importe">
+                </TextView>
+
+                <!-- Moneda -->
+                <TextView
+                    android:id="@+id/lblMoneda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="3dp">
+                </TextView>
+
+                <!-- Importe de Deuda -->
+                <TextView
+                    android:id="@+id/lblDeuda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_gravity="right">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Fecha y Dias -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Fecha -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="@string/lbl_infocliente_ctacte_fecha">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <!-- Dias -->
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="right">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_gravity="right"
+                    android:text="@string/lbl_infocliente_ctacte_dias">
+                </TextView>
+
+                <TextView
+                    android:id="@+id/lblDias"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_gravity="right">
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Codigo Unico y Banco -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_codybanco">
+
+            <!-- CÃ³digo Unico -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="@string/lbl_infocliente_ctacte_coduni">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblCodigoUnico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblBanco"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_weight="1"
+                android:lines="1"
+                android:layout_gravity="right"
+                android:gravity="right">
+            </TextView>
+        </LinearLayout>
+
+        <!-- Permito,Cia Sec, Linea Credito -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_opcionespermitir">
+            <!-- Permitido -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="@string/lbl_infocliente_ctacte_permitido">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblPermitido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblCiaSec"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblObservacion"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblLineaCredito"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:lines="1"
+                android:layout_gravity="right"
+                android:gravity="right">
+            </TextView>
+        </LinearLayout>
+
+        <!-- Doc Asociado, Texto Html -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/lay_otros">
+
+            <!-- Permitido -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:text="@string/lbl_infocliente_ctacte_docref">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblDocAsociado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_marginLeft="3dp">
+            </TextView>
+
+            <TextView
+                android:id="@+id/lblTextoHtml"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="3dp">
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
