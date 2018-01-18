@@ -13,6 +13,8 @@
     <string name="btn_Limpiar">Limpiar</string>
     <string name="btn_atras">Atras</string>
     <string name="btn_nuevabusq">Nueva búsqueda</string>
+    <string name="btn_modificar">Modificar</string>
+    <string name="btn_eliminar">Eliminar</string>
 
     <string name="lbl_buscarclientetitulo">Búsqueda de Cliente</string>
     <string name="lbl_buscarclientecodigo">Código</string>
@@ -50,4 +52,15 @@
     <string name="lbl_infocliente_ctacte_coduni">C.Uni:</string>
     <string name="lbl_infocliente_ctacte_permitido">Permitido:</string>
     <string name="lbl_infocliente_ctacte_docref">D.Ref:</string>
+
+    <string name="lbl_buscarpedido_titulo">Búsqueda de Pedidos</string>
+    <string name="lbl_buscarpedido_enviado">Enviados</string>
+    <string name="lbl_buscarpedido_codigo">Código</string>
+    <string name="lbl_buscarpedido_nombre">Cliente</string>
+
+    <string name="lbl_buscarpedido_item_codigo">Pedido:</string>
+    <string name="lbl_buscarpedido_item_nombre">Nombre:</string>
+    <string name="lbl_buscarpedido_item_cotiza">Cot:</string>
+    <string name="lbl_buscarpedido_item_fechareg">FReg:</string>
+    <string name="lbl_buscarpedido_item_fechamod">FMod:</string>
 </resources>

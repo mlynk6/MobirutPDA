@@ -33,7 +33,8 @@
             android:label="@string/title_activity_inicio_menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".BuscarCliente" />
-        <activity android:name=".InformCliente"></activity>
+        <activity android:name=".InformCliente" />
+        <activity android:name=".BuscarPedido"></activity>
     </application>
 
 </manifest>

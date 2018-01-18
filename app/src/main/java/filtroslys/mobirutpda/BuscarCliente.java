@@ -35,7 +35,6 @@ public class BuscarCliente extends AppCompatActivity {
         contexto = this;
         app = ((appglobal) getApplicationContext());
         sFrm = getIntent().getExtras().getString("Formulario");
-
         EnlazarControles();
     }
 
