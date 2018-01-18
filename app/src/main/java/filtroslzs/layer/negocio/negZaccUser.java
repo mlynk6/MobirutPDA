@@ -44,6 +44,7 @@ public class negZaccUser {
             objEnt.setCorreo(cx.getString(2));
             objEnt.setCodVendCia(cx.getString(3));
             objEnt.setCodTransp(cx.getString(4));
+            objEnt.setCodVendedor(cx.getString(5));
         }
         cx.close();
         cx=null;

@@ -3,6 +3,9 @@ import filtroslzs.layer.entidad.*;
 
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.TextUtils;
+
+import org.w3c.dom.Text;
 
 public class appglobal extends Application {
 	private String Fecha, USinc="N";
@@ -261,6 +264,7 @@ public class appglobal extends Application {
 	}
 
 	public void setCodigoUsuario(String codigoUsuario) {
+		if(TextUtils.isEmpty(codigoUsuario))codigoUsuario = "";
 		CodigoUsuario = codigoUsuario;
 	}
 
@@ -273,6 +277,7 @@ public class appglobal extends Application {
 	}
 
 	public void setCodigoVendedor(String CodigoVendedor) {
+		if(TextUtils.isEmpty(CodigoVendedor))CodigoVendedor = "";
 		this.CodigoVendedor = CodigoVendedor;
 	}
 
@@ -289,6 +294,7 @@ public class appglobal extends Application {
 	}
 
 	public void setCodVendCia(String codVendCia) {
+		if(TextUtils.isEmpty(codVendCia))codVendCia = "";
 		this.codVendCia = codVendCia;
 	}
 

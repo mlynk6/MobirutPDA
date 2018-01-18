@@ -21,10 +21,11 @@ public class datZaccUser {
     }
 
     public Cursor AutenticaUsuario(String Usuario, String Clave) {
-        sql = "Select c_usuario,c_nombre,c_correo,c_codvendcia,c_codtransp "
-            + "from zacc_usuario "
-            + "where c_usuario ='" + Usuario + "' "
-            + "and c_clave ='" + Clave + "'";
+        sql = "Select a.c_usuario,a.c_nombre,a.c_correo,a.c_codvendcia,a.c_codtransp,b.v_codvendedor "
+            + "from zacc_usuario a "
+            + "left join tbd_vendxcia b on (a.c_codvendcia = b.v_codvendcia) "
+            + "where a.c_usuario ='" + Usuario + "' "
+            + "and a.c_clave ='" + Clave + "'";
         Cursor c = objDat.EjecutaSelect(sql);
         return c;
     }
