@@ -56,7 +56,7 @@ public class InicioSincroniza extends AppCompatActivity {
         });
     }
 
-    public  void  CargarMenuSincroniza(){
+    public void CargarMenuSincroniza(){
         LstMenu = new ArrayList<>();
         negZaccMenu negMenu = new negZaccMenu(app.getConexion());
         LstMenu = negMenu.ListaMenu("MMONTERO","SC");
