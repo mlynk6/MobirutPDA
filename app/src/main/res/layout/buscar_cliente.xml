@@ -15,94 +15,120 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/shape_yellow"
             android:orientation="vertical">
 
             <TextView
-                android:text="@string/lbl_buscarclientetitulo"
-                android:textSize="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
                 android:layout_marginBottom="3dp"
-                android:textStyle="bold"/>
+                android:layout_marginLeft="3dp"
+                android:text="@string/lbl_buscarclientetitulo"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-            <TableLayout android:id="@+id/lbl_panelbuscar"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"></LinearLayout>
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/lbl_panelbuscar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:stretchColumns="2">
 
                 <TableRow android:layout_marginBottom="4dp">
+
                     <TextView
-                        android:text="@string/lbl_buscarclientecodigo"
-                        android:textSize="15dp"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
+                        android:layout_gravity="fill_vertical"
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
-                        android:layout_gravity="fill_vertical"/>
+                        android:text="@string/lbl_buscarclientecodigo"
+                        android:textSize="15dp" />
 
                     <EditText
                         android:id="@+id/txtCodigo"
-                        android:layout_column="2"
-                        android:inputType="number"
+                        android:layout_width="match_parent"
                         android:layout_height="25dp"
-                        android:textSize="15dp"
-                        android:layout_marginRight="3dp"
+                        android:layout_column="2"
                         android:layout_gravity="fill_vertical"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/edittext_style"
                         android:hint="@string/ingresartexto"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:maxLength="10">
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textSize="15dp">
+
                         <requestFocus />
                     </EditText>
 
-                    <Button
-                        android:id="@+id/btnBuscar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:textSize="15dp"
-                        android:text="@string/btn_buscar"
-                        android:onClick="EventoBuscar"
-                        android:layout_marginRight="3dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"/>
+                    <LinearLayout
+                        android:layout_width="20dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnBuscarCli"
+                            android:layout_width="@dimen/size40"
+                            android:layout_height="wrap_content"
+
+                            android:background="@drawable/shape_silver"
+                            android:drawableLeft="@android:drawable/ic_menu_search"
+                            android:onClick="EventoBuscar" />
+                    </LinearLayout>
                 </TableRow>
 
-                <TableRow android:layout_marginBottom="6dp">
+                <TableRow
+                    android:layout_marginTop="2dp"
+                    android:gravity="center">
+
                     <TextView
-                        android:text="@string/lbl_buscarclienterazon"
-                        android:textSize="15dp"
                         android:layout_width="50dp"
                         android:layout_height="20dp"
+                        android:layout_gravity="fill_vertical"
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
-                        android:layout_gravity="fill_vertical"/>
+                        android:text="@string/lbl_buscarclienterazon"
+                        android:textSize="15dp" />
 
                     <EditText
                         android:id="@+id/txtNombre"
-                        android:layout_column="2"
                         android:layout_height="25dp"
-                        android:textSize="15dp"
+                        android:layout_column="2"
                         android:layout_marginRight="3dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:inputType="textCapCharacters"
+                        android:background="@drawable/edittext_style"
                         android:capitalize="characters"
                         android:hint="@string/ingresartexto"
-                        android:maxLength="15"/>
+                        android:inputType="textCapCharacters"
+                        android:maxLength="15"
+                        android:textSize="15dp" />
 
-                    <Button
-                        android:id="@+id/btnLimpiar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:textSize="15dp"
-                        android:text="@string/btn_Limpiar"
-                        android:onClick="EventoLimpiar"
-                        android:layout_marginRight="3dp"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnLimpiarCli"
+                            android:layout_width="@dimen/size40"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_silver"
+                            android:drawableStart="@android:drawable/ic_popup_sync"
+                            android:onClick="EventoLimpiar" />
+                    </LinearLayout>
+
                 </TableRow>
             </TableLayout>
+
         </LinearLayout>
 
         <!-- Panel de Filtrado -->
@@ -115,17 +141,16 @@
 
             <View
                 android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:background="@color/colorLine"/>
+                android:layout_height="2dp" />
 
             <ListView
                 android:id="@+id/lvCliente"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:divider="#FFFFFF"
-                android:dividerHeight="1dp"
                 android:layout_gravity="center"
-                android:drawSelectorOnTop="false"/>
+                android:layout_marginTop="4dp"
+                android:dividerHeight="1dp"
+                android:drawSelectorOnTop="false" />
         </LinearLayout>
 
     </LinearLayout>

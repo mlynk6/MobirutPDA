@@ -1,5 +1,6 @@
 package filtroslys.mobirutpda;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.app.Activity;
@@ -26,6 +27,8 @@ public class BuscarCliente extends AppCompatActivity {
     int nPosicion = -1;
     String sFrm="";
     ArrayList<entCliente> LstCliente;
+    int currentapiVersion;
+    android.support.v7.app.ActionBar actionBar=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,11 @@ public class BuscarCliente extends AppCompatActivity {
         app = ((appglobal) getApplicationContext());
         sFrm = getIntent().getExtras().getString("Formulario");
         EnlazarControles();
+        currentapiVersion = android.os.Build.VERSION.SDK_INT;
+        if (currentapiVersion >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            actionBar = getSupportActionBar();
+            actionBar.hide();
+        }
     }
 
     public void EnlazarControles() {
