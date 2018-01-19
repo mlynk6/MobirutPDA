@@ -466,36 +466,5 @@
 
             </LinearLayout>
         </ScrollView>
-
-        <!-- Pie de botones -->
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn_atras"
-                android:layout_width="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:text="@string/btn_atras"
-                android:textSize="15dp"
-                android:onClick="EventoAtras"
-                android:layout_alignParentLeft="true"
-                android:textStyle="bold"/>
-
-            <Button
-                android:id="@+id/btnSeleccionar"
-                android:layout_width="wrap_content"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="1dp"
-                android:textSize="15dp"
-                android:text="@string/btn_nuevabusq"
-                android:onClick="EventoSeleccionar"
-                android:layout_alignParentRight="true"
-                android:textStyle="bold"/>
-        </RelativeLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

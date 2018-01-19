@@ -105,6 +105,7 @@ public class TaskSincronizaSolicita extends AsyncTask<Void,Void,Void>{
                     LstData.add("TBC_CLIENTEITEMDSC");
                     LstData.add("TBC_ITEMSEGMENTOCAT");
                     LstData.add("TBC_DSCTOXCLIENTEITEM");
+                    LstData.add("TBC_CLIENTEXVENDCIA");
                     break;
                 case "0106010400":
                     LstData.add("TBC_CATECLIENTEXCIA");

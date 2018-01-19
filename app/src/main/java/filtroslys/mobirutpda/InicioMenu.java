@@ -180,10 +180,21 @@ public class InicioMenu extends AppCompatActivity implements NavigationView.OnNa
         int id = item.getItemId();
         switch (id){
             case  106010000 :
-                Intent intent = new Intent(getApplicationContext(),InicioSincroniza.class);
-                startActivity(intent);
-
-
+                Intent itSinc = new Intent(getApplicationContext(),InicioSincroniza.class);
+                startActivity(itSinc);
+            case  101010000 :
+                if(app.getClienteId()==0){
+                    Intent itClieA = new Intent(getApplicationContext(),BuscarCliente.class);
+                    itClieA.putExtra("Formulario","MENU");
+                    startActivity(itClieA);
+                }else{
+                    Intent itClieB = new Intent(getApplicationContext(),InformCliente.class);
+                    startActivity(itClieB);
+                }
+                break;
+            case  102010000 :
+                Intent itPed = new Intent(getApplicationContext(),BuscarPedido.class);
+                startActivity(itPed);
         }
       /*  if (id == R.id.nav_camera) {
             // Handle the camera action

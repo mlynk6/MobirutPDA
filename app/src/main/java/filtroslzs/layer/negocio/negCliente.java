@@ -29,12 +29,12 @@ public class negCliente {
             objEnt = new entCliente();
             objEnt.setCodCliente(cx.getInt(0));
             objEnt.setRazSocial(cx.getString(1));
-            objEnt.setDireccion(cx.getString(3));
-            objEnt.setDocFiscal(cx.getString(4));
-            objEnt.setSegmento(cx.getString(5));
-            objEnt.setTipoCategoria(cx.getString(6));
-            objEnt.setDescuento(cx.getString(7));
-            objEnt.setTextoLstHtml(cx.getString(8));
+            objEnt.setDireccion(cx.getString(2));
+            objEnt.setDocFiscal(cx.getString(3));
+            objEnt.setSegmento(cx.getString(4));
+            objEnt.setTipoCategoria(cx.getString(5));
+            objEnt.setDescuento(cx.getString(6));
+            objEnt.setTextoLstHtml(cx.getString(7));
             ListaDat.add(objEnt);
         }
         objEnt = null;
@@ -51,12 +51,12 @@ public class negCliente {
             objEnt = new entCliente();
             objEnt.setCodCliente(cx.getInt(0));
             objEnt.setRazSocial(cx.getString(1));
-            objEnt.setDireccion(cx.getString(3));
-            objEnt.setDocFiscal(cx.getString(4));
-            objEnt.setSegmento(cx.getString(5));
-            objEnt.setTipoCategoria(cx.getString(6));
-            objEnt.setDescuento(cx.getString(7));
-            objEnt.setTextoLstHtml(cx.getString(8));
+            objEnt.setDireccion(cx.getString(2));
+            objEnt.setDocFiscal(cx.getString(3));
+            objEnt.setSegmento(cx.getString(4));
+            objEnt.setTipoCategoria(cx.getString(5));
+            objEnt.setDescuento(cx.getString(6));
+            objEnt.setTextoLstHtml(cx.getString(7));
             ListaDat.add(objEnt);
         }
         objEnt = null;

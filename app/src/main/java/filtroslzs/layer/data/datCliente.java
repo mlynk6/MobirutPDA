@@ -24,7 +24,7 @@ public class datCliente {
 
         if(Vend.length()>0){
             sql = sql + "inner join tbc_clientexvendcia f on (b.n_codcliente = f.n_codcliente "
-                    + "and b.n_codcia = f.n_codcia and f.v_codvendedor '" + Vend + "') ";
+                    + "and b.n_codcia = f.n_codcia and f.v_codvendedor = '" + Vend + "') ";
         }
 
         sql = sql + "where a.v_codcliente like '%" + Codigo + "%' "
@@ -39,7 +39,7 @@ public class datCliente {
     public Cursor ListaClienteRuta(String Vend,String Cia,String Codigo,String Nombre,int Dia) {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal," +
                 "e.c_descripcion as v_segmento,f.c_descripcion as v_tipocategoria," +
-                "d.n_pordescuento * 100 || '%' as n_descuento,a.c_textolsthtml" +
+                "d.n_pordescuento * 100 || '%' as n_descuento,a.c_textolsthtml " +
                 "from tbc_cliente a " +
                 "inner join tbc_cateclientexcia b on (a.n_codcliente = b.n_codcliente) " +
                 "inner join tbc_clienteruta c on (a.n_codcliente = c.n_cliente) " +
@@ -49,7 +49,7 @@ public class datCliente {
 
         if(Vend.length()>0){
             sql = sql + "inner join tbc_clientexvendcia g on (b.n_codcliente = g.n_codcliente "
-                    + "and b.n_codcia = g.n_codcia and g.v_codvendedor '" + Vend + "') ";
+                    + "and b.n_codcia = g.n_codcia and g.v_codvendedor ='" + Vend + "') ";
         }
 
         sql = sql + "where a.v_codcliente like '%" + Codigo + "%' "
@@ -67,7 +67,7 @@ public class datCliente {
         sql = "Select a.n_codcliente,a.v_razsocial,a.v_direccion,a.v_docfiscal,"
             + "d.c_descripcion as v_segmento,e.c_descripcion as v_tipocategoria,"
             + "c.n_pordescuento * 100 || '%' as n_descuento,a.c_textoreghtml,"
-            + "a.v_agenteretencion,a.v_garante,a.n_cantletras,a.n_porcentajedoc"
+            + "a.v_agenteretencion,a.v_garante,a.n_cantletras,a.n_porcentajedoc "
             + "from tbc_cliente a "
             + "inner join tbc_cateclientexcia b on (a.n_codcliente = b.n_codcliente) "
             + "inner join tbc_categoria c on (b.n_codcategoria = c.n_codcategoria) "

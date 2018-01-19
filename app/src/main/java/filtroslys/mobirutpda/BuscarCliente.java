@@ -55,13 +55,11 @@ public class BuscarCliente extends AppCompatActivity {
     public void EventoBuscar(View view) {
         String sCodigo = txtCodigo.getText().toString().trim();
         String sNombre = txtNombre.getText().toString().trim();
-        String sCia = String.valueOf(app.getCodCia());
+        String sCodCia = String.valueOf(app.getCodCia());
 
         negCliente objNeg = new negCliente(app.getConexion());
-        LstCliente = objNeg.ListaCliente(app.getCodigoVendedor(),sCia,sCodigo,sNombre);
+        LstCliente = objNeg.ListaCliente(app.getCodigoVendedor(),sCodCia,sCodigo,sNombre);
         lvCliente.setAdapter(new AdpBuscarCliente(this,LstCliente,sFrm));
-
-        LstCliente = null;
         objNeg = null;
         nPosicion = -1;
     }
@@ -78,7 +76,6 @@ public class BuscarCliente extends AppCompatActivity {
         LstCliente = objNeg.ListaClienteRuta(app.getCodigoVendedor(),sCia,sCodigo,sNombre,nDia);
         lvCliente.setAdapter(new AdpBuscarCliente(this,LstCliente,sFrm));
 
-        LstCliente = null;
         objNeg = null;
         nPosicion = -1;
     }
@@ -95,11 +92,11 @@ public class BuscarCliente extends AppCompatActivity {
             if(app.getClienteId()==0){
                 app.setClienteId(LstCliente.get(nPosicion).getCodCliente());
             }
-            Intent intent = new Intent().setClass(this,BuscarCliente.class);
-            intent.putExtra("Formulario",sFrm);
-            intent.putExtra("CodCliente",LstCliente.get(nPosicion).getCodCliente());
-            setResult(Activity.RESULT_OK, intent);
-            this.finish();
+            if(sFrm.equals("MENU")){
+                Intent intent = new Intent().setClass(this,InformCliente.class);
+                startActivity(intent);
+            }
+            //this.finish();
         }
     }
 }
