@@ -134,11 +134,11 @@ public class ZFnGeneral {
 		return valor;
 	}
 
-	private static double Redondear(double numero, int digitos) {
+	public static double Redondear(double numero, int digitos) {
 		int cifras = (int) Math.pow(10, digitos);
 		return Math.rint(numero * cifras) / cifras;
 	}
-	
+
 	public static double Redondear2(double input, int digit){
 		double out = Double.NaN;
 		double rounder = Double.NaN;
@@ -192,5 +192,27 @@ public class ZFnGeneral {
             public void run() {}
         }, milisegundos);
     }
+
+	public static String redondearDecimales(String valor) {
+		DecimalFormat df = new DecimalFormat("###,###,###.00");
+		double dec;
+		if (valor.indexOf(".") > 0) {
+			dec = Double.parseDouble(valor);
+			dec = Redondear(dec, 2);
+			valor = df.format(dec);
+		} else {
+			valor = df.format(Double.parseDouble(valor));
+		}
+		return valor;
+	}
+
+	public static String getStringFecha(Date date) {
+		String fecha = "";
+		if (date != null) {
+			java.text.SimpleDateFormat dfm = new java.text.SimpleDateFormat("dd-MM-yyyy");
+			fecha = dfm.format(date);
+		}
+		return fecha;
+	}
 
 }

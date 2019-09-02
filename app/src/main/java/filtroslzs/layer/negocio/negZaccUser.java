@@ -34,17 +34,25 @@ public class negZaccUser {
         return ListaDat;
     }
 
-    public entZaccUser AutenticaUsuario(String Nombre, String Clave) {
-        Cursor cx = procesomain.AutenticaUsuario(Nombre,Clave);
+    public entZaccUser AutenticaUsuario(String Usuario, String Clave) {
+        Cursor cx = procesomain.AutenticaUsuario(Usuario,Clave);
         entZaccUser objEnt = new entZaccUser();
 
         if (cx.moveToFirst()) {
             objEnt.setUsuario(cx.getString(0));
             objEnt.setNombre(cx.getString(1));
             objEnt.setCorreo(cx.getString(2));
+            objEnt.setCodVendCia(cx.getString(3));
+            objEnt.setCodTransp(cx.getString(4));
+            objEnt.setCodVendedor(cx.getString(5));
         }
         cx.close();
         cx=null;
         return objEnt;
     }
+
+    public int ActualizarHomeCodigo(String Usuario,String Vendedor,String Transportista){
+        return procesomain.ActualizarHomeCodigo(Usuario,Vendedor,Transportista);
+    }
+
 }

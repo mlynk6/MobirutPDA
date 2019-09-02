@@ -2,6 +2,8 @@ package filtroslzs.layer.entidad;
 
 public class entZaccUser {
     private String c_usuario="",c_nombre="",c_clave="",c_correo="",c_esventa="",c_sac="";
+    private String c_codvendcia="",c_codtransp="";
+    private String c_codvendedor="";
 
     public String getUsuario() {
         return c_usuario;
@@ -49,5 +51,29 @@ public class entZaccUser {
 
     public void setSac(String c_sac) {
         this.c_sac = c_sac;
+    }
+
+    public String getCodVendCia() {
+        return c_codvendcia;
+    }
+
+    public void setCodVendCia(String c_codvendcia) {
+        this.c_codvendcia = c_codvendcia;
+    }
+
+    public String getCodTransp() {
+        return c_codtransp;
+    }
+
+    public void setCodTransp(String c_codtransp) {
+        this.c_codtransp = c_codtransp;
+    }
+
+    public String getCodVendedor() {
+        return c_codvendedor;
+    }
+
+    public void setCodVendedor(String c_codvendedor) {
+        this.c_codvendedor = c_codvendedor;
     }
 }

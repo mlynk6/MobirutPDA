@@ -1,6 +1,9 @@
 package filtroslzs.layer.negocio;
 
 import android.database.Cursor;
+import android.util.Log;
+
+import filtroslys.mobirutpda.Login;
 import filtroslzs.layer.data.*;
 import filtroslzs.layer.entidad.*;
 import java.util.ArrayList;
@@ -14,9 +17,9 @@ public class negZaccMenu {
         procesomain = new datZaccMenu(this.entDB);
     }
 
-    public ArrayList<entZaccMenu> ListaMenuHome(String Usuario) {
+    public ArrayList<entZaccMenu> ListaMenu(String Usuario,String Nivel) {
         ArrayList<entZaccMenu> ListaDat = new ArrayList<entZaccMenu>();
-        Cursor cx = procesomain.ListaMenuHome(Usuario);
+        Cursor cx = procesomain.ListaMenu(Usuario,Nivel);
         entZaccMenu objEnt;
         while (cx.moveToNext()) {
             objEnt = new entZaccMenu();
@@ -25,6 +28,7 @@ public class negZaccMenu {
             objEnt.setTipo(cx.getString(2));
             objEnt.setIdRef(cx.getString(3));
             ListaDat.add(objEnt);
+            Log.i("Menu id : ",cx.getString(0));
         }
         objEnt = null;
         cx.close();
@@ -32,8 +36,8 @@ public class negZaccMenu {
         return ListaDat;
     }
 
-    public boolean AccesoMenu(String Usuario,String IdReg) {
-        Cursor cx = procesomain.AccesoMenu(Usuario,IdReg);
+    public boolean GetAccesoMenu(String Usuario,String IdReg) {
+        Cursor cx = procesomain.GetAccesoMenu(Usuario,IdReg);
         entZaccUser objEnt = new entZaccUser();
         boolean bVal = false;
 
